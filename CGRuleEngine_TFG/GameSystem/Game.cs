@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CGRuleEngine_TFG.GameSystem
 {
-    internal class Game
+    public class Game
     {
     }
 }

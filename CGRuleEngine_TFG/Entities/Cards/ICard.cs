@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CGRuleEngine_TFG.Entities.Cards
 {
-    internal interface ICard
+    public interface ICard
     {
     }
 }

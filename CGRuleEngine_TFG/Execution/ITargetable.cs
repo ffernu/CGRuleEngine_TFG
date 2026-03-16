@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CGRuleEngine_TFG.Execution
 {
-    internal interface ITargetable
+    public interface ITargetable
     {
     }
 }
