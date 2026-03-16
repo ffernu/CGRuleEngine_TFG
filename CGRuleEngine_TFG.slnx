@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="CGRuleEngine_TFG.Test/CGRuleEngine_TFG.Test.csproj" />
   <Project Path="CGRuleEngine_TFG/CGRuleEngine_TFG.csproj" />
 </Solution>
