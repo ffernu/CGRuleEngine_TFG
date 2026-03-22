@@ -19,7 +19,7 @@ namespace CGRuleEngine_TFG.Execution
         public void Pop()
         {
             StackEntry entry = this.Entries.Pop();
-            Game gameState; // TODO: Get the current game state from somewhere
+            Game gameState = null; // TODO: Get the current game state from somewhere
             entry.Resolve(gameState);
         }
 
