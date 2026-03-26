@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CGRuleEngine_TFG.Entities.Zones
 {
-    internal class Banished : IZone
+    public class Banished : IZone
     {
         public List<Player> Owners { get; set; } = new List<Player>();
         public List<ICard> Content { get; set; } = new List<ICard>();
