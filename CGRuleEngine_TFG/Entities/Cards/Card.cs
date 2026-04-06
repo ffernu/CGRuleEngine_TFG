@@ -8,7 +8,7 @@ using System.Buffers;
 
 namespace CGRuleEngine_TFG.Entities.Cards
 {
-    public interface ICard : ITargetable
+    public class Card : ITargetable
     {
         public String Name { get; set; }
         public int id { get; set; }

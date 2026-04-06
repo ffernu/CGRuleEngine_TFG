@@ -9,7 +9,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
     public class Discard : IZone
     {
         public List<Player> Owners { get; set; } = new List<Player>();
-        public List<ICard> Content { get; set; } = new List<ICard>();
+        public List<Card> Content { get; set; } = new List<Card>();
 
         // Constructor to initialize the discard pile, it creates an empty content and no owners
         public Discard() { }
@@ -21,7 +21,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
         }
 
         // Method to add cards to the discard pile
-        public void AddCard(ICard card)
+        public void AddCard(Card card)
         {
             if (Owners.Contains(card.Controller) == false)
             {
@@ -31,7 +31,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
         }
 
         // Method to remove cards from the discard pile
-        public void RemoveCard(ICard card)
+        public void RemoveCard(Card card)
         {
             if (Owners.Contains(card.Controller) == false)
             {
@@ -41,7 +41,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
         }
 
         // Method to move cards from the discard pile to another zone
-        public void MoveCard(ICard card, IZone targetZone)
+        public void MoveCard(Card card, IZone targetZone)
         {
             if (Content.Contains(card) == false)
             {
@@ -54,20 +54,20 @@ namespace CGRuleEngine_TFG.Entities.Zones
         // Method to move all cards from the discard pile to another zone
         public void MoveAll(IZone targetZone)
         {
-            foreach (var card in new List<ICard>(Content))
+            foreach (var card in new List<Card>(Content))
             {
                 this.MoveCard(card, targetZone);
             }
         }
 
         // Method to search for a card in the discard pile by name, it returns the first card that matches the name or null if no card is found
-        public ICard Search(string name)
+        public Card Search(string name)
         {
             return Content.Find(c => c.Name == name);
         }
 
         // Method to get the top card of the discard pile, it returns the last card in the content list or throws an exception if the discard pile is empty
-        public ICard GetTopCard()
+        public Card GetTopCard()
         {
             if (Content.Count == 0)
             {

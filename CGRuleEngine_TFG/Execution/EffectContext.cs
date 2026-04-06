@@ -8,7 +8,7 @@ namespace CGRuleEngine_TFG.Execution
     public class EffectContext
     {
 
-        public ICard SourceCard { get; set; }
+        public Card SourceCard { get; set; }
         public List<ITargetable> Targets { get; set; } = new List<ITargetable>();
     }
 }

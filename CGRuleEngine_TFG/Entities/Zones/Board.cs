@@ -9,7 +9,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
     public class Board : IZone
     {
         public List<Player> Owners { get; set; } = new List<Player>();
-        public List<ICard> Content { get; set; } = new List<ICard>();
+        public List<Card> Content { get; set; } = new List<Card>();
         public int maxSize { get; set; }
         public int maxSizePerPlayer { get; set; }
 
@@ -28,7 +28,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
         }
 
         // Implementation of the AddCard method from the IZone interface, it adds a card to the board if the player is an owner of the board, if the board is not full and if the player has not reached the maximum number of cards on the board
-        public void AddCard(ICard card)
+        public void AddCard(Card card)
         {
             if (Owners.Contains(card.Controller) == false)
             {
@@ -47,7 +47,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
         }
 
         // Implementation of the RemoveCard method from the IZone interface, it removes a card from the board if the card is on the board
-        public void RemoveCard(ICard card)
+        public void RemoveCard(Card card)
         {
             if (Content.Contains(card) == false)
             {
@@ -57,23 +57,23 @@ namespace CGRuleEngine_TFG.Entities.Zones
         }
 
         // Method that removes all cards from the board and returns a list of the removed cards
-        public List<ICard> clear()
+        public List<Card> clear()
         {
-            List<ICard> removedCards = new List<ICard>(Content);
+            List<Card> removedCards = new List<Card>(Content);
             Content.Clear();
             return removedCards;
         }
 
         // Method that removes all cards from the board that are controlled by a specific player and returns a list of the removed cards
-        public List<ICard> clearByOwner(Player player)
+        public List<Card> clearByOwner(Player player)
         {
-            List<ICard> removedCards = Content.FindAll(c => c.Controller == player);
+            List<Card> removedCards = Content.FindAll(c => c.Controller == player);
             Content.RemoveAll(c => c.Controller == player);
             return removedCards;
         }
 
         // Implementation of the MoveCard method from the IZone interface, it moves a card from the board to another zone if the card is on the board
-        public void MoveCard(ICard card, IZone targetZone)
+        public void MoveCard(Card card, IZone targetZone)
         {
             if (Content.Contains(card) == false)
             {
@@ -84,13 +84,13 @@ namespace CGRuleEngine_TFG.Entities.Zones
         }
 
         // Implementation of the Search method from the IZone interface, it searches for a card on the board by its name and returns it if found, otherwise it returns null
-        public ICard Search(string name)
+        public Card Search(string name)
         {
             return Content.Find(c => c.Name == name);
         }
 
         // Method that returns a list of cards on the board that are controlled by a specific player
-        public List<ICard> GetCardsByOwner(Player player)
+        public List<Card> GetCardsByOwner(Player player)
         {
             return Content.FindAll(c => c.Controller == player);
         }

@@ -9,7 +9,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
     public class Hand : IZone
     {
         public List<Player> Owners { get; set; } = new List<Player>();
-        public List<ICard> Content { get; set; } = new List<ICard>();
+        public List<Card> Content { get; set; } = new List<Card>();
         public int MaxSize { get; set; }
 
         // Constructor to initialize the hand with a maximum size
@@ -26,7 +26,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
         }
 
         // Method to add a card to the hand, it checks if the player is an owner of the hand and if the hand is not full before adding the card to the content
-        public void AddCard(ICard card)
+        public void AddCard(Card card)
         {
             if (Owners.Contains(card.Controller) == false)
             {
@@ -40,7 +40,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
         }
 
         // Method to remove a card from the hand, it checks if the player is an owner of the hand and if the card is in the content before removing it
-        public void RemoveCard(ICard card)
+        public void RemoveCard(Card card)
         {
             if (Owners.Contains(card.Controller) == false)
             {
@@ -54,7 +54,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
         }
 
         // Method to move a card from the hand to another zone, it checks if the player is an owner of the hand and if the card is in the content before removing it from the hand and adding it to the target zone
-        public void MoveCard(ICard card, IZone targetZone)
+        public void MoveCard(Card card, IZone targetZone)
         {
             if (!Content.Contains(card))
             {
@@ -65,7 +65,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
         }
 
         // Method to search for a card in the hand by its name, it returns the first card that matches the name or null if no card is found
-        public ICard Search(string name)
+        public Card Search(string name)
         {
             return Content.Find(c => c.Name == name);
         }
@@ -77,7 +77,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
         }
 
         // Method to discard a card from the hand to a discard zone, it checks if the player is an owner of the hand and if the card is in the content before removing it from the hand and adding it to the discard zone
-        public void Discard(ICard card, IZone discard)
+        public void Discard(Card card, IZone discard)
         {
             this.MoveCard(card, discard);
         }
@@ -85,7 +85,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
         // Method to discard all cards from the hand to a discard zone, it iterates through all the cards in the content and moves them to the discard zone
         public void DiscardAll(IZone discard)
         {
-            foreach (var card in new List<ICard>(Content))
+            foreach (var card in new List<Card>(Content))
             {
                 this.MoveCard(card, discard);
             }

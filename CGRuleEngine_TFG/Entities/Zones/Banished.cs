@@ -9,7 +9,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
     public class Banished : IZone
     {
         public List<Player> Owners { get; set; } = new List<Player>();
-        public List<ICard> Content { get; set; } = new List<ICard>();
+        public List<Card> Content { get; set; } = new List<Card>();
 
         // Constructor to initialize the banished zone, it creates an empty content and no owners
         public Banished() { }
@@ -21,7 +21,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
         }
 
         // Method to add a card to the banished zone, it checks if the player is an owner of the banished zone and if so, it adds the card to the content
-        public void AddCard(ICard card)
+        public void AddCard(Card card)
         {
             if (Owners.Contains(card.Controller) == false)
             {
@@ -31,7 +31,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
         }
 
         // Method to remove a card from the banished zone, it checks if the player is an owner of the banished zone and if so, it removes the card from the content
-        public void RemoveCard(ICard card)
+        public void RemoveCard(Card card)
         {
             if (Owners.Contains(card.Controller) == false)
             {
@@ -41,7 +41,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
         }
 
         // Method to move a card from the banished zone to another zone, it checks if the player is an owner of the banished zone and if so, it removes the card from the content and adds it to the target zone
-        public void MoveCard(ICard card, IZone targetZone)
+        public void MoveCard(Card card, IZone targetZone)
         {
             if (Owners.Contains(card.Controller) == false)
             {
@@ -56,30 +56,30 @@ namespace CGRuleEngine_TFG.Entities.Zones
         }
 
         // Method to search for a card in the banished zone by its name, it returns the first card that matches the name or null if no card is found
-        public ICard Search(string name)
+        public Card Search(string name)
         {
             return Content.Find(c => c.Name == name);
         }
 
         // Method to get all the face-up cards in the banished zone, it returns a list of cards that are face-up or throws an exception if the banished zone is empty
-        public List<ICard> GetFaceUp()
+        public List<Card> GetFaceUp()
         {
             if (this.Content.Count == 0)
             {
                 throw new InvalidOperationException("The banished zone is empty.");
             }
-            List<ICard> ret = new List<ICard>(Content.FindAll(c => c.isFaceUp));
+            List<Card> ret = new List<Card>(Content.FindAll(c => c.isFaceUp));
             return ret;
         }
 
         // Method to get all the face-down cards in the banished zone, it returns a list of cards that are face-down or throws an exception if the banished zone is empty
-        public List<ICard> GetFaceDown()
+        public List<Card> GetFaceDown()
         {
             if (this.Content.Count == 0)
             {
                 throw new InvalidOperationException("The banished zone is empty.");
             }
-            List<ICard> ret = new List<ICard>(Content.FindAll(c => !c.isFaceUp));
+            List<Card> ret = new List<Card>(Content.FindAll(c => !c.isFaceUp));
             return ret;
         }
     }

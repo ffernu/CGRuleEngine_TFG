@@ -30,6 +30,8 @@ namespace CGRuleEngine_TFG.Entities.Players.Controllers
 
         public virtual IStrategy studyStrategy(Game gameState)
         {
-
+            //TODO
+            return this.Strategy; //TEMP 
         }
     }
+}
