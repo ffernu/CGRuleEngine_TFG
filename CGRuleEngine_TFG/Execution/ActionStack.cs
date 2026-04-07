@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CGRuleEngine_TFG.Execution
 {
-    public class Stack
+    public class ActionStack
     {
         public Stack<StackEntry> Entries = new Stack<StackEntry>();
 
