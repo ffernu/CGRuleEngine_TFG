@@ -20,6 +20,12 @@ namespace CGRuleEngine_TFG.Entities.Zones
             return new Banished();
         }
 
+        // Method to initialize the banished zone, it can be used to set up the initial state of the banished zone, such as clearing the content
+        public void Initialize()
+        {
+            this.Content.Clear();
+        }
+
         // Method to add a card to the banished zone, it checks if the player is an owner of the banished zone and if so, it adds the card to the content
         public void AddCard(Card card)
         {

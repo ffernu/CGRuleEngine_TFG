@@ -15,6 +15,9 @@ namespace CGRuleEngine_TFG.Entities.Zones
         // Prototype pattern: allows to create a copy of the zone
         public IZone Clone();
 
+        // Method to initialize the zone, it can be used to set up the initial state of the zone
+        public void Initialize();
+
         // Method to add a card to the zone, it should also update the card's controller and owner properties
         public void AddCard(Card card);
 

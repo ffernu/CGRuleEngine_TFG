@@ -25,6 +25,12 @@ namespace CGRuleEngine_TFG.Entities.Zones
             return clone;
         }
 
+        // Method to initialize the hand, it does nothing but is necessary due to Game's initializeGame method, it can be used to set up the initial state of the hand if needed
+        public void Initialize()
+        {
+            return;
+        }
+
         // Method to add a card to the hand, it checks if the player is an owner of the hand and if the hand is not full before adding the card to the content
         public void AddCard(Card card)
         {

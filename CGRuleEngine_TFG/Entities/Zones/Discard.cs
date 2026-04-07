@@ -20,6 +20,12 @@ namespace CGRuleEngine_TFG.Entities.Zones
             return new Discard();
         }
 
+        // Method to initialize the discard pile, it clears the content of the discard pile
+        public void Initialize()
+        {
+            this.Content.Clear();
+        }
+
         // Method to add cards to the discard pile
         public void AddCard(Card card)
         {

@@ -30,6 +30,12 @@ namespace CGRuleEngine_TFG.Entities.Zones
             return clone;
         }
 
+        // Method to initialize the deck, it can be used to set up the initial state of the deck, such as shuffling the cards in the content
+        public void Initialize()
+        {
+            this.Suffle();
+        }
+
         // Method to add a card to the deck, it checks if the player is an owner of the deck and if the deck is not full before adding the card to the content
         public void AddCard(Card card)
         {
