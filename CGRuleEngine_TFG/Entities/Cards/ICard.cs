@@ -1,4 +1,5 @@
-﻿using CGRuleEngine_TFG.Entities.Players;
+﻿using CGRuleEngine_TFG.Entities.Cards.DataBase;
+using CGRuleEngine_TFG.Entities.Players;
 using CGRuleEngine_TFG.Execution;
 using CGRuleEngine_TFG.Execution.Effects;
 using System;
@@ -9,8 +10,9 @@ namespace CGRuleEngine_TFG.Entities.Cards
 {
     public interface ICard : ITargetable
     {
+        public CardTemplate BaseTemplate { get; set; }
         public String Name { get; set; }
-        public int Id { get; set; }
+        public int InstanceId { get; set; }
 
         public String SideA { get; set; }
         public String SideB { get; set; }
@@ -26,21 +28,12 @@ namespace CGRuleEngine_TFG.Entities.Cards
         public List<IEffect> Effects { get; set; }
 
         // Method to flip the card, changing its face-up state
-        public void Flip()
-        {
-            IsFaceUp = !IsFaceUp;
-        }
+        public void Flip();
 
         // Method to tap the card, changing its tapped state
-        public void Tap()
-        {
-            IsTapped = true;
-        }
+        public void Tap();
 
         // Method to untap the card, changing its tapped state
-        public void Untap()
-        {
-            IsTapped = false;
-        }
+        public void Untap();
     }
 }

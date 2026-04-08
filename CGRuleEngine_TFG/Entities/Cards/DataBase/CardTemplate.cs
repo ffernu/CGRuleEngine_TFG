@@ -3,10 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CGRuleEngine_TFG.Entities.Cards
+namespace CGRuleEngine_TFG.Entities.Cards.DataBase
 {
     public class CardTemplate
     {
+        public String Type { get; set; } // Type of the card, e.g., "BasicCard", "DSCard", etc.
+
         public String Id { get; set; }
         public String Name { get; set; }
         public String SideA { get; set; }

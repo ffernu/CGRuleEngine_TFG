@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace CGRuleEngine_TFG.Entities.Cards
+namespace CGRuleEngine_TFG.Entities.Cards.DataBase
 {
     public class CardDatabase
     {

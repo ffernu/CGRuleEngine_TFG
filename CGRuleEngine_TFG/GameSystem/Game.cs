@@ -1,4 +1,5 @@
-﻿using CGRuleEngine_TFG.Entities.Players;
+﻿using CGRuleEngine_TFG.Entities.Cards;
+using CGRuleEngine_TFG.Entities.Players;
 using CGRuleEngine_TFG.Entities.Zones;
 using CGRuleEngine_TFG.Execution;
 using CGRuleEngine_TFG.GameSystem.TurnSystem;
@@ -12,9 +13,10 @@ namespace CGRuleEngine_TFG.GameSystem
     public class Game
     {
         public List<Player> Players { get; set; } = new List<Player>();
-        public Player ActivePlayer { get; set; }
-        public TurnFactory templateTurn { get; set; }
-        public Turn CurrentTurn { get; set; }
+        public Player? ActivePlayer { get; set; }
+        public CardFactory CardFactory { get; set; }
+        public TurnFactory TemplateTurn { get; set; }
+        public Turn? CurrentTurn { get; set; }
         public int TurnNumber { get; set; }
         public ActionStack Stack { get; set; }
         public bool IsGameOver { get; set; }
@@ -23,14 +25,15 @@ namespace CGRuleEngine_TFG.GameSystem
         // Constructor that takes a GameBuilder object as a parameter and initializes the properties of the Game class with the values from the builder
         public Game(GameBuilder builder)
         {
-            Players = builder.Players;
-            ActivePlayer = null; // The active player will be initialized when the game starts, it is set to null for now
-            templateTurn = builder.TemplateTurn;
-            CurrentTurn = null; // The current turn will be initialized when the game starts, it is set to null for now
-            TurnNumber = 0;
-            Stack = builder.Stack;
-            IsGameOver = false;
-            results = new Dictionary<Player, int>();
+            this.Players = builder.Players;
+            this.ActivePlayer = null; // The active player will be initialized when the game starts, it is set to null for now
+            this.TemplateTurn = builder.TemplateTurn;
+            this.CardFactory = builder.CardFactory;
+            this.CurrentTurn = null; // The current turn will be initialized when the game starts, it is set to null for now
+            this.TurnNumber = 0;
+            this.Stack = builder.Stack;
+            this.IsGameOver = false;
+            this.results = new Dictionary<Player, int>();
         }
 
         // Method to initialize the game, this method can be used to set up the initial game state, such as shuffling decks, drawing starting hands, etc. It is marked as virtual to allow for customization in derived classes
@@ -70,7 +73,7 @@ namespace CGRuleEngine_TFG.GameSystem
             int lastPlayer = Players.IndexOf(ActivePlayer);
             this.ActivePlayer = Players[lastPlayer + 1];
             this.TurnNumber += 1;
-            this.CurrentTurn = this.templateTurn.CreateTurn(ActivePlayer);
+            this.CurrentTurn = this.TemplateTurn.CreateTurn(ActivePlayer);
             this.CurrentTurn.Start();
         }
 
@@ -83,7 +86,7 @@ namespace CGRuleEngine_TFG.GameSystem
             }
             this.ActivePlayer = player;
             this.TurnNumber += 1;
-            this.CurrentTurn = this.templateTurn.CreateTurn(ActivePlayer);
+            this.CurrentTurn = this.TemplateTurn.CreateTurn(ActivePlayer);
             this.CurrentTurn.Start();
         }
 
