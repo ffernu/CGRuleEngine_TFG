@@ -10,13 +10,13 @@ namespace CGRuleEngine_TFG.Entities.Cards
     public interface ICard : ITargetable
     {
         public String Name { get; set; }
-        public int id { get; set; }
+        public int Id { get; set; }
 
-        public String sideA { get; set; }
-        public String sideB { get; set; }
-        public bool isFaceUp { get; set; }
+        public String SideA { get; set; }
+        public String SideB { get; set; }
+        public bool IsFaceUp { get; set; }
 
-        public bool isTapped { get; set; }
+        public bool IsTapped { get; set; }
 
         public Player Owner { get; set; }
         public Player? Controller { get; set; }
@@ -28,19 +28,19 @@ namespace CGRuleEngine_TFG.Entities.Cards
         // Method to flip the card, changing its face-up state
         public void Flip()
         {
-            isFaceUp = !isFaceUp;
+            IsFaceUp = !IsFaceUp;
         }
 
         // Method to tap the card, changing its tapped state
         public void Tap()
         {
-            isTapped = true;
+            IsTapped = true;
         }
 
         // Method to untap the card, changing its tapped state
         public void Untap()
         {
-            isTapped = false;
+            IsTapped = false;
         }
     }
 }
