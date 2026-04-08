@@ -8,7 +8,7 @@ using System.Buffers;
 
 namespace CGRuleEngine_TFG.Entities.Cards
 {
-    public class Card : ITargetable
+    public class BasicCard : ICard
     {
         public String Name { get; set; }
         public int id { get; set; }
@@ -20,10 +20,10 @@ namespace CGRuleEngine_TFG.Entities.Cards
         public bool isTapped { get; set; }
 
         public Player Owner { get; set; }
-        public Player Controller { get; set; }
+        public List<Player> Controller { get; set; } = new List<Player>();
 
         public List<String> Tags { get; set; }
-        public Dictionary<String, String> Properties { get; set; }
+        public Dictionary<String, Object> Properties { get; set; }
         public List<IEffect> Effects { get; set; }
 
         // Method to flip the card, changing its face-up state

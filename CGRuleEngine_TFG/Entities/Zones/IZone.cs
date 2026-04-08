@@ -10,25 +10,26 @@ namespace CGRuleEngine_TFG.Entities.Zones
     public interface IZone : ITargetable
     {
         public List<Player> Owners { get; set; }
-        public List<Card> Content { get; set; }
+        public List<ICard> Content { get; set; }
 
-        // Prototype pattern: allows to create a copy of the zone
+        /*// Prototype pattern: allows to create a copy of the zone
         public IZone Clone();
+        */
 
         // Method to initialize the zone, it can be used to set up the initial state of the zone
         public void Initialize();
 
         // Method to add a card to the zone, it should also update the card's controller and owner properties
-        public void AddCard(Card card);
+        public void AddCard(ICard card);
 
         // Method to remove a card from the zone, it should also update the card's controller and owner properties
-        public void RemoveCard(Card card);
+        public void RemoveCard(ICard card);
 
         // Method to move a card from this zone to another zone, it should also update the card's controller and owner properties
-        public void MoveCard(Card card, IZone targetZone);
+        public void MoveCard(ICard card, IZone targetZone);
 
         // Method to search for a card in the zone by its name, it should return the first card that matches the name or null if no card is found
-        public Card Search(string name);
+        public ICard Search(string name);
 
     }
 }
