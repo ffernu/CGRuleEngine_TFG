@@ -19,7 +19,7 @@ namespace CGRuleEngine_TFG.Entities.Cards
         public CardFactory(CardDatabase database)
         {
             _database = database;
-            RegisterBuilder("BasicCard", (t, o, id) => new BasicCard(t, o, id));
+            RegisterBuilder("NormalCard", (t, o, id) => new NormalCard(t, o, id));
             RegisterBuilder("DSCard", (t, o, id) => new DSCard(t, o, id));
         }
 

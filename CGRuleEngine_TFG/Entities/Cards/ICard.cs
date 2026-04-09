@@ -35,5 +35,8 @@ namespace CGRuleEngine_TFG.Entities.Cards
 
         // Method to untap the card, changing its tapped state
         public void Untap();
+
+        // Method to reset the card's state, untapping it and flipping it face up
+        public void Reset();
     }
 }

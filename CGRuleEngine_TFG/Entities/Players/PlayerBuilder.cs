@@ -9,7 +9,8 @@ namespace CGRuleEngine_TFG.Entities.Players
     public class PlayerBuilder
     {
         public String Name { get; set; }
-        public Dictionary<String, int> Stats { get; set; } = new Dictionary<String, int>();
+        public Dictionary<String, Object> Properties { get; set; } = new Dictionary<String, Object>();
+        public List<string> Tags { get; set; } = new List<string>();
         public Dictionary<String, IZone> Zones { get; set; } = new Dictionary<String, IZone>();
         public IPlayerController Controller { get; set; }
 
@@ -22,7 +23,7 @@ namespace CGRuleEngine_TFG.Entities.Players
         // Default constructor that initializes the Name property of the builder with an empty string
         public PlayerBuilder() { }
 
-        // Method to set the stats of the player, it takes a dictionary of stats as a parameter and assigns it to the Stats property of the builder, it returns the builder itself to allow for method chaining
+        // Method to set the properties of the player, it takes a dictionary of properties as a parameter and assigns it to the properties property of the builder, it returns the builder itself to allow for method chaining
         public Player Build()
         {
             return new Player(this);
@@ -42,10 +43,17 @@ namespace CGRuleEngine_TFG.Entities.Players
             return this;
         }
 
-        // Method to set the stats of the player, it takes a name and a value as parameters and adds them to the Stats dictionary of the builder
+        // Method to set the properties of the player, it takes a name and a value as parameters and adds them to the properties dictionary of the builder
         public PlayerBuilder WithStat(String name, int value)
         {
-            Stats[name] = value;
+            Properties[name] = value;
+            return this;
+        }
+
+        // Method to set a tag for the player, it takes a string as a parameter and adds it to the Tags list of the builder
+        public PlayerBuilder WithTag(String tag)
+        {
+            Tags.Add(tag);
             return this;
         }
 

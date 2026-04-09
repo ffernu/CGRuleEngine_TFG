@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CGRuleEngine_TFG.Entities.Zones
 {
-    public interface IZone : ITargetable
+    public interface IZone
     {
         public List<Player> Owners { get; set; }
         public List<ICard> Content { get; set; }
