@@ -1,0 +1,24 @@
+{
+    "Id": "FireBall",
+    "Name": "Fire Ball",
+    "SideA": "",
+    "SideB": "",
+
+    "Tags": [
+        "Scorcery",
+        "Wizard",
+    ],
+
+    "Properties": {
+        "Cost": 3,
+    },
+
+    "Effects": [
+        {
+            "Type": "DamageEffect",
+            "Parameters": {
+                "Ammount": 5
+            }
+        }
+    ]
+}

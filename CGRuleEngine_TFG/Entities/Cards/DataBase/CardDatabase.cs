@@ -47,6 +47,19 @@ namespace CGRuleEngine_TFG.Entities.Cards.DataBase
                             throw new InvalidOperationException($"ERROR: ID duplicado ({template.Id}) en el archivo {file}");
                         }
 
+                        // Convert long values to int in the Properties dictionary to ensure consistent data types
+                        if (template.Properties != null)
+                        {
+                            List<string> keys = template.Properties.Keys.ToList();
+                            foreach (string key in keys)
+                            {
+                                if (template.Properties[key] is long num)
+                                {
+                                    template.Properties[key] = Convert.ToInt32(num);
+                                }
+                            }
+                        }
+
                         _templates.Add(template.Id, template);
                     }
                 }
