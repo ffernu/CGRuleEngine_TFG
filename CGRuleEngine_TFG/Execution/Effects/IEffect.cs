@@ -7,8 +7,7 @@ namespace CGRuleEngine_TFG.Execution.Effects
 {
     public interface IEffect
     {
-        public String Name { get; }
-        public String Description { get; }
-        public void execute(EffectContext context, Game gameState);
+        public String? DebugName { get; set; }
+        public void execute(EffectContext context);
     }
 }
