@@ -1,5 +1,6 @@
 ﻿using CGRuleEngine_TFG.Entities.Cards.DataBase;
 using CGRuleEngine_TFG.Entities.Players;
+using CGRuleEngine_TFG.Entities.Zones;
 using CGRuleEngine_TFG.Execution;
 using CGRuleEngine_TFG.Execution.Effects;
 using System;
@@ -22,6 +23,7 @@ namespace CGRuleEngine_TFG.Entities.Cards
 
         public Player Owner { get; set; }
         public Player? Controller { get; set; }
+        public IZone? CurrentZone { get; set; }
 
         public List<String> Tags { get; set; }
         public Dictionary<String, Object> Properties { get; set; }

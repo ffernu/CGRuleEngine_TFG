@@ -41,6 +41,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
             {
                 card.Controller = null;
             }
+            card.CurrentZone = this;
         }
 
         // Method to remove a card from the hand, it checks if the card is in the content before removing it from the hand
@@ -52,6 +53,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
             }
             Content.Remove(card);
             card.Controller = null;
+            card.CurrentZone = null;
         }
 
         // Method to move a card from the hand to another zone, it changes the controllers of the card to match the owners of the target zone

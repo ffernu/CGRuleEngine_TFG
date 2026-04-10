@@ -33,6 +33,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
             {
                 card.Controller = null;
             }
+            card.CurrentZone = this;
         }
 
         // Method to remove cards from the discard pile
@@ -44,6 +45,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
             }
             Content.Remove(card);
             card.Controller = null;
+            card.CurrentZone = null;
         }
 
         // Method to move cards from the discard pile to another zone

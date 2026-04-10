@@ -33,6 +33,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
             {
                 card.Controller = null;
             }
+            card.CurrentZone = this;
         }
 
         // Overloaded method to add a card to the banished zone with a specified face-up state, it sets the card's face-up state and then calls the AddCard method
@@ -42,11 +43,16 @@ namespace CGRuleEngine_TFG.Entities.Zones
             AddCard(card);
         }
 
-        // Method to remove a card from the banished zone, it checks if the player is an owner of the banished zone and if so, it removes the card from the content
+        // Method to remove a card from the banished zone, it removes the card from the content and sets its controller and current zone to null
         public void RemoveCard(ICard card)
         {
+            if (Content.Contains(card) == false)
+            {
+                throw new InvalidOperationException("The card is not in the banished.");
+            }
             Content.Remove(card);
             card.Controller = null;
+            card.CurrentZone = null;
         }
 
         // Method to move a card from the banished zone to another zone, it removes the card from the content and adds it to the target zone

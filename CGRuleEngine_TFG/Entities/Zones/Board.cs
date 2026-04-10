@@ -39,6 +39,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
                 throw new InvalidOperationException("The player has reached the maximum number of cards on the board.");
             }
             Content.Add(card);
+            card.CurrentZone = this;
             // The controller of the card is not changed when the card is added to the board, it is assumed the board is shared by all players 
         }
 
@@ -56,6 +57,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
                 throw new InvalidOperationException("The card is not on the board.");
             }
             Content.Remove(card);
+            card.CurrentZone = this;
             // Because when the card was added to the board its controller was not changed, the controller of the card is not changed when the card is removed from the board
         }
 

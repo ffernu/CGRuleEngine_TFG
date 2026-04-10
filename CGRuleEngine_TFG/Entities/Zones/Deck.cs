@@ -44,6 +44,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
             {
                 card.Controller = null;
             }
+            card.CurrentZone = this;
         }
 
         // Method to remove a card from the deck, it checks if the card is in the content before removing it
@@ -55,6 +56,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
             }
             Content.Remove(card);
             card.Controller = null;
+            card.CurrentZone = null;
         }
 
         // Method to move a card from the deck to another zone, it checks if the card is in the content before removing it and adding it to the target zone
