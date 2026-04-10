@@ -10,6 +10,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
     {
         public List<Player> Owners { get; set; } = new List<Player>();
         public List<ICard> Content { get; set; } = new List<ICard>();
+        public bool ResetOnEntry { get; set; } = true;
 
         // Constructor to initialize the discard pile, it creates an empty content and no owners
         public Discard() { }
@@ -65,6 +66,13 @@ namespace CGRuleEngine_TFG.Entities.Zones
         public ICard Search(string name)
         {
             return Content.Find(c => c.Name == name);
+        }
+
+        //
+        public ICard PullCard()
+        {
+            // TODO.
+            return null;
         }
 
         // Method to get the top card of the discard pile, it returns the last card in the content list or throws an exception if the discard pile is empty

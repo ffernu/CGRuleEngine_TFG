@@ -12,9 +12,8 @@ namespace CGRuleEngine_TFG.Entities.Zones
         public List<Player> Owners { get; set; }
         public List<ICard> Content { get; set; }
 
-        /*// Prototype pattern: allows to create a copy of the zone
-        public IZone Clone();
-        */
+        // Optional property to indicate if the zone should reset the stats of the cards when they enter it
+        public bool ResetOnEntry { get; set; }
 
         // Method to initialize the zone, it can be used to set up the initial state of the zone
         public void Initialize();
@@ -27,6 +26,9 @@ namespace CGRuleEngine_TFG.Entities.Zones
 
         // Method to move a card from this zone to another zone, it should also update the card's controller and owner properties
         public void MoveCard(ICard card, IZone targetZone);
+
+        // Method to pull a card from the zone, it should remove the card from the content and return it
+        public ICard PullCard();
 
         // Method to search for a card in the zone by its name, it should return the first card that matches the name or null if no card is found
         public ICard Search(string name);

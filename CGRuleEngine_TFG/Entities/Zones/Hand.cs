@@ -10,6 +10,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
     {
         public List<Player> Owners { get; set; } = new List<Player>();
         public List<ICard> Content { get; set; } = new List<ICard>();
+        public bool ResetOnEntry { get; set; } = true;
         public int MaxSize { get; set; }
 
         // Constructor to initialize the hand with a maximum size
@@ -64,6 +65,13 @@ namespace CGRuleEngine_TFG.Entities.Zones
         public ICard Search(string name)
         {
             return Content.Find(c => c.Name == name);
+        }
+
+        //
+        public ICard PullCard()
+        {
+            // TODO.
+            return null;
         }
 
         // Method to check if the hand has reached its maximum size, it returns true if the number of cards in the content is greater than or equal to the maximum size, otherwise it returns false

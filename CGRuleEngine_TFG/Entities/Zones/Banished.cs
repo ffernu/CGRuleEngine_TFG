@@ -10,6 +10,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
     {
         public List<Player> Owners { get; set; } = new List<Player>();
         public List<ICard> Content { get; set; } = new List<ICard>();
+        public bool ResetOnEntry { get; set; } = true;
 
         // Constructor to initialize the banished zone, it creates an empty content and no owners
         public Banished() { }
@@ -37,7 +38,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
         // Overloaded method to add a card to the banished zone with a specified face-up state, it sets the card's face-up state and then calls the AddCard method
         public void AddCard(ICard card, bool isFaceUp)
         {
-            card.isFaceUp = isFaceUp;
+            card.IsFaceUp = isFaceUp;
             AddCard(card);
         }
 
@@ -65,6 +66,13 @@ namespace CGRuleEngine_TFG.Entities.Zones
             return Content.Find(c => c.Name == name);
         }
 
+        //
+        public ICard PullCard()
+        {
+            // TODO.
+            return null;
+        }
+
         // Method to get all the face-up cards in the banished zone, it returns a list of cards that are face-up or throws an exception if the banished zone is empty
         public List<ICard> GetFaceUp()
         {
@@ -72,7 +80,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
             {
                 throw new InvalidOperationException("The banished zone is empty.");
             }
-            List<ICard> ret = new List<ICard>(Content.FindAll(c => c.isFaceUp));
+            List<ICard> ret = new List<ICard>(Content.FindAll(c => c.IsFaceUp));
             return ret;
         }
 
@@ -83,7 +91,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
             {
                 throw new InvalidOperationException("The banished zone is empty.");
             }
-            List<ICard> ret = new List<ICard>(Content.FindAll(c => !c.isFaceUp));
+            List<ICard> ret = new List<ICard>(Content.FindAll(c => !c.IsFaceUp));
             return ret;
         }
     }

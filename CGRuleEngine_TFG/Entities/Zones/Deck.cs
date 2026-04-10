@@ -10,6 +10,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
     {
         public List<Player> Owners { get; set; } = new List<Player>();
         public List<ICard> Content { get; set; } = new List<ICard>();
+        public bool ResetOnEntry { get; set; } = true;
         public int maxSize { get; set; }
 
         // Static random number generator to be used for shuffling the deck
@@ -83,8 +84,8 @@ namespace CGRuleEngine_TFG.Entities.Zones
             }
         }
 
-        // Method to draw a card from the top of the deck, it checks if the content is not empty before removing and returning the top card
-        public ICard Draw()
+        // Method to seek the top card of the deck, it checks if the content is not empty before returning the last card in the list, which represents the top of the deck
+        public ICard Seek()
         {
             if (Content.Count == 0)
             {
@@ -92,7 +93,14 @@ namespace CGRuleEngine_TFG.Entities.Zones
             }
             int top = Content.Count - 1;
             ICard card = Content[top];
-            Content.RemoveAt(top);
+            return card;
+        }
+
+        // Method to pull a card from the deck, it is an alias for the Draw method
+        public ICard PullCard()
+        {
+            ICard card = this.Seek();
+            this.RemoveCard(card);
             return card;
         }
 

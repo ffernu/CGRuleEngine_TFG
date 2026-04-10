@@ -10,6 +10,7 @@ namespace CGRuleEngine_TFG.Entities.Zones
     {
         public List<Player> Owners { get; set; } = new List<Player>();
         public List<ICard> Content { get; set; } = new List<ICard>();
+        public bool ResetOnEntry { get; set; } = true;
         public int maxSize { get; set; }
         public int maxSizePerPlayer { get; set; }
 
@@ -85,6 +86,13 @@ namespace CGRuleEngine_TFG.Entities.Zones
         public ICard Search(string name)
         {
             return Content.Find(c => c.Name == name);
+        }
+
+        //
+        public ICard PullCard()
+        {
+            // TODO.
+            return null;
         }
 
         // Method that returns a list of cards on the board that are controlled by a specific player
