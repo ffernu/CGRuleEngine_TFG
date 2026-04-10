@@ -6,67 +6,79 @@ using System.Text;
 
 namespace CGRuleEngine_TFG.Entities.Zones
 {
-    public class Board : IZone
+    public class Board : BaseZone
     {
-        public List<Player> Owners { get; set; } = new List<Player>();
-        public List<ICard> Content { get; set; } = new List<ICard>();
-        public bool ResetOnEntry { get; set; } = true;
-        public int maxSize { get; set; }
-        public int maxSizePerPlayer { get; set; }
+        public int MaxSize { get; set; }
+        public int MaxSizePerPlayer { get; set; }
 
         // Constructor to initialize the board with a maximum size and a maximum size per player
-        public Board(int maxSize, int maxSizePerPlayer)
+        public Board(int maxSize, int maxSizePerPlayer, Player owner)
         {
-            this.maxSize = maxSize;
-            this.maxSizePerPlayer = maxSizePerPlayer;
+            this.MaxSize = maxSize;
+            this.MaxSizePerPlayer = maxSizePerPlayer;
+            this.Owners.Add(owner);
+        }
+
+        // Constructor to initialize the board with a maximum size, a maximum size per player and a list of owners
+        public Board(int maxSize, int maxSizePerPlayer, List<Player> owners)
+        {
+            this.MaxSize = maxSize;
+            this.MaxSizePerPlayer = maxSizePerPlayer;
+            this.Owners.AddRange(owners);
         }
 
         // Method to initialize the board, it can be used to set up the initial state of the board, such as clearing the content
-        public void Initialize()
+        public override void Initialize()
         {
-            this.Content.Clear();
+            this.Content.Clear();// TODO
         }
 
         // Implementation of the AddCard method from the IZone interface, it adds a card to the board if the player is an owner of the board, if the board is not full and if the player has not reached the maximum number of cards on the board
-        public void AddCard(ICard card)
+        public override void AddCard(ICard card)
         {
-            if (Content.Count >= maxSize)
+            if (this.Content.Count >= MaxSize)
             {
                 throw new InvalidOperationException("The board is full.");
             }
-            if (this.CountByController(card.Controller) >= maxSizePerPlayer)
+            if (this.CountByController(card.Controller) >= this.MaxSizePerPlayer)
             {
                 throw new InvalidOperationException("The player has reached the maximum number of cards on the board.");
             }
             Content.Add(card);
+            if (this.ResetOnEntry)
+            {
+                card.Reset();
+            }
             card.CurrentZone = this;
             // The controller of the card is not changed when the card is added to the board, it is assumed the board is shared by all players 
+        }
+
+        // Implementation of the RemoveCard method from the IZone interface, it removes a card from the board if the card is on the board
+        public override void RemoveCard(ICard card)
+        {
+            if (this.Content.Contains(card) == false)
+            {
+                throw new InvalidOperationException("The card is not on the board.");
+            }
+            this.Content.Remove(card);
+            card.CurrentZone = null;
+            // Because when the card was added to the board its controller was not changed, the controller of the card is not changed when the card is removed from the board
+        }
+
+        // Method that removes the last card added to the board and returns it
+        public override ICard PullCard()
+        {
+            if (this.Content.Count == 0) return null;
+
+            ICard card = this.Content[this.Content.Count - 1];
+            this.RemoveCard(card);
+            return card;
         }
 
         // Method that returns the number of cards on the board that are controlled by a specific player
         public int CountByController(Player player)
         {
-            return Content.FindAll(c => c.Controller == player).Count;
-        }
-
-        // Implementation of the RemoveCard method from the IZone interface, it removes a card from the board if the card is on the board
-        public void RemoveCard(ICard card)
-        {
-            if (Content.Contains(card) == false)
-            {
-                throw new InvalidOperationException("The card is not on the board.");
-            }
-            Content.Remove(card);
-            card.CurrentZone = this;
-            // Because when the card was added to the board its controller was not changed, the controller of the card is not changed when the card is removed from the board
-        }
-
-        // Method that removes all cards from the board and returns a list of the removed cards
-        public List<ICard> Clear()
-        {
-            List<ICard> removedCards = new List<ICard>(Content);
-            Content.Clear();
-            return removedCards;
+            return this.Content.FindAll(c => c.Controller == player).Count;
         }
 
         // Method that removes all cards from the board that are owned by a specific player and returns a list of the removed cards
@@ -77,30 +89,21 @@ namespace CGRuleEngine_TFG.Entities.Zones
             return removedCards;
         }
 
-        // Implementation of the MoveCard method from the IZone interface, it moves a card from the board to another zone if the card is on the board
-        public void MoveCard(ICard card, IZone targetZone)
-        {
-            RemoveCard(card);
-            targetZone.AddCard(card);
-        }
-
-        // Implementation of the Search method from the IZone interface, it searches for a card on the board by its name and returns it if found, otherwise it returns null
-        public ICard Search(string name)
-        {
-            return Content.Find(c => c.Name == name);
-        }
-
-        //
-        public ICard PullCard()
-        {
-            // TODO.
-            return null;
-        }
-
         // Method that returns a list of cards on the board that are controlled by a specific player
         public List<ICard> GetCardsByController(Player player)
         {
-            return Content.FindAll(c => c.Controller == player);
+            return this.Content.FindAll(c => c.Controller == player);
+        }
+
+        // Method that removes all cards from the board and returns a list of the removed cards, it uses a copy of the content to avoid modifying the collection while iterating over it
+        public List<ICard> Clear()
+        {
+            List<ICard> removedCards = new List<ICard>(this.Content);
+            foreach (var card in removedCards)
+            {
+                this.RemoveCard(card);
+            }
+            return removedCards;
         }
     }
 }

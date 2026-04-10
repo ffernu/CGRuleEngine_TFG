@@ -31,15 +31,9 @@ namespace CGRuleEngine_TFG.Execution.Effects
                     IZone destZone = context.SourcePlayer.getZone(this.DestinationZoneName);
 
                     if (destZone == null) continue;
+                    if (card.CurrentZone == null) continue;
 
-                    // Reset state of the card if the destination zone requires it
-                    if (destZone.ResetOnEntry)
-                    {
-                        card.Reset();
-                    }
-
-                    
-                    // TODO: sadjflaksjdflkajs leer bloc notas
+                    card.CurrentZone.RemoveCard(card);
                     destZone.AddCard(card);
                 }
             }
