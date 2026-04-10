@@ -1,8 +1,8 @@
 {
     "Type":  "NormalCard",
 
-    "Id": "FireBall",
-    "Name": "Fire Ball",
+    "Id": "TestCard",
+    "Name": "The best card",
     "SideA": "",
     "SideB": "",
 
@@ -11,7 +11,7 @@
     ],
 
     "Properties": {
-        "Cost": 3
+        "Cost": 10
     },
 
     "Effects": [
@@ -21,6 +21,25 @@
                 "AffectedProperty": "Health",
                 "Value": 5,
                 "Operation": "Subtract"
+            }
+        },
+        {
+            "Type": "ModifyTagEffect",
+            "Parameters": {
+                "Tag": "Fly",
+                "Operation": "Remove"
+            }
+        },
+        {
+            "Type": "DrawEffect",
+            "Parameters": {
+                "Amount": 2
+            }
+        },
+        {
+            "Type: ": "MoveCardEffect",
+            "Parameters": {
+                "Destination": "Graveyard"
             }
         }
     ]
