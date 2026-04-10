@@ -1,23 +1,26 @@
 {
+    "Type":  "NormalCard",
+
     "Id": "FireBall",
     "Name": "Fire Ball",
     "SideA": "",
     "SideB": "",
 
     "Tags": [
-        "Scorcery",
-        "Wizard",
+        "Scorcery"
     ],
 
     "Properties": {
-        "Cost": 3,
+        "Cost": 3
     },
 
     "Effects": [
         {
-            "Type": "DamageEffect",
+            "Type": "ModifyPropertyEffect",
             "Parameters": {
-                "Ammount": 5
+                "AffectedProperty": "Health",
+                "Value": 5,
+                "Operation": "Subtract"
             }
         }
     ]

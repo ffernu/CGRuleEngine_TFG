@@ -1,6 +1,7 @@
 ﻿using CGRuleEngine_TFG.Entities.Cards.DataBase;
 using CGRuleEngine_TFG.Entities.Players;
 using CGRuleEngine_TFG.Entities.Zones;
+using CGRuleEngine_TFG.Execution.Effects;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -12,19 +13,21 @@ namespace CGRuleEngine_TFG.Entities.Cards
     {
         private readonly CardDatabase _database;
         private int _idCounter = 0; // Counter to generate unique instance IDs
+        private readonly EffectFactory _effectFactory; // EffectFactory instance to create effects for cards
 
-        private readonly Dictionary<string, Func<CardTemplate, Player, int, ICard>> _builders = new Dictionary<string, Func<CardTemplate, Player, int, ICard>>(); // Dictionary to hold custom builders for different card types
+        private readonly Dictionary<string, Func<CardTemplate, Player, int, EffectFactory, ICard>> _builders = new Dictionary<string, Func<CardTemplate, Player, int, EffectFactory, ICard>>(); // Dictionary to hold custom builders for different card types
 
         // Method to create a new card instance based on a template ID and registered builders for standard card types
-        public CardFactory(CardDatabase database)
+        public CardFactory(CardDatabase database, EffectFactory effectFactory)
         {
-            _database = database;
-            RegisterBuilder("NormalCard", (t, o, id) => new NormalCard(t, o, id));
-            RegisterBuilder("DSCard", (t, o, id) => new DSCard(t, o, id));
+            this._database = database;
+            this._effectFactory = effectFactory;
+            RegisterBuilder("NormalCard", (t, o, id, ef) => new NormalCard(t, o, id, ef));
+            RegisterBuilder("DSCard", (t, o, id, ef) => new DSCard(t, o, id, ef));
         }
 
         // Method to register a custom builder function for a specific card type
-        public void RegisterBuilder(string cardType, Func<CardTemplate, Player, int, ICard> builderFunction)
+        public void RegisterBuilder(string cardType, Func<CardTemplate, Player, int, EffectFactory, ICard> builderFunction)
         {
             _builders[cardType] = builderFunction;
         }
@@ -40,7 +43,7 @@ namespace CGRuleEngine_TFG.Entities.Cards
                 _idCounter++;
 
                 // Use the registered builder function to create the card instance
-                ICard card = constructor(template, owner, _idCounter);
+                ICard card = constructor(template, owner, _idCounter, this._effectFactory);
                 if (zone != null)
                 {
                     zone.AddCard(card);

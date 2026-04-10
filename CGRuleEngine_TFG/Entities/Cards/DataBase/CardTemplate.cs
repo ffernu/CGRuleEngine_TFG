@@ -5,6 +5,12 @@ using System.Text;
 
 namespace CGRuleEngine_TFG.Entities.Cards.DataBase
 {
+    public class EffectData
+    {
+        public string Type { get; set; }
+        public Dictionary<string, object> Parameters { get; set; }
+    }
+
     public class CardTemplate
     {
         public String Type { get; set; } // Type of the card, e.g., "NormalCard", "DSCard", etc.
@@ -16,6 +22,6 @@ namespace CGRuleEngine_TFG.Entities.Cards.DataBase
         public String? TransformInto { get; set; } // ID of the card this one transforms into, if applicable
         public List<String> Tags { get; set; }
         public Dictionary<String, Object> Properties { get; set; }
-        public List<String> Effects { get; set; } // Saving effect IDs instead of actual IEffect objects, to be resolved when instantiating the card
+        public List<EffectData> Effects { get; set; } // List of effects associated with the card, represented as EffectData objects containing the type and parameters of each effect
     }
 }

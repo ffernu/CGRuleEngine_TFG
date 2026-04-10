@@ -13,8 +13,8 @@ namespace CGRuleEngine_TFG.Entities.Cards
     {
 
         // Constructor that takes a CardTemplate, a Player, and an instance ID as parameters and calls the base constructor to initialize the properties of the NormalCard class with the values from the template and the owner
-        public NormalCard(CardTemplate template, Player owner, int instanceId)
-            : base(template, owner, instanceId)
+        public NormalCard(CardTemplate template, Player owner, int instanceId, EffectFactory effectFactory)
+            : base(template, owner, instanceId, effectFactory)
         {
             
         }

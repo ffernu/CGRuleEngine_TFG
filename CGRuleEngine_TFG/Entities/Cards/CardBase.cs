@@ -29,7 +29,7 @@ namespace CGRuleEngine_TFG.Entities.Cards
         public List<IEffect> Effects { get; set; }
 
         // Constructor that initializes the card's properties based on the provided template, owner, and instance ID
-        protected CardBase(CardTemplate template, Player owner, int instanceId)
+        protected CardBase(CardTemplate template, Player owner, int instanceId, EffectFactory effectFactory)
         {
             this.BaseTemplate = template;
             this.Owner = owner;
@@ -41,7 +41,15 @@ namespace CGRuleEngine_TFG.Entities.Cards
 
             this.Tags = new List<string>(template.Tags ?? new List<string>());
             this.Properties = new Dictionary<string, object>(template.Properties ?? new Dictionary<string, object>());
-            this.Effects = new List<IEffect>(); // TODO
+
+            this.Effects = new List<IEffect>();// Initialize the Effects list and populate it with effects created from the template's effect data using the EffectFactory
+            if (template.Effects != null)
+            {
+                foreach (var effectData in template.Effects)
+                {
+                    this.Effects.Add(effectFactory.CreateEffect(effectData));
+                }
+            }
         }
 
         // Method to try to get a property value by its name and type, it checks if the property exists and is of the correct type, returning true if successful and false otherwise
