@@ -1,0 +1,74 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0" version="29.6.1">
+  <diagram name="Page-1" id="Ot2PAUGkuACPRhSYiFOt">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hc_F5L6Nf2BlohNOz1Ib-26" edge="1" parent="1" source="hc_F5L6Nf2BlohNOz1Ib-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;endSize=10;" target="hc_F5L6Nf2BlohNOz1Ib-14">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="366" />
+              <mxPoint x="480" y="366" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hc_F5L6Nf2BlohNOz1Ib-5" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Turn" vertex="1">
+          <mxGeometry height="184" width="180" x="290" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="hc_F5L6Nf2BlohNOz1Ib-6" parent="hc_F5L6Nf2BlohNOz1Ib-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;+ owner: Player&lt;/div&gt;&lt;div&gt;+ phases: List&amp;lt;IPhase&amp;gt;&lt;/div&gt;&lt;div&gt;+ currentPhase: IPhase&lt;/div&gt;&lt;div&gt;+ currentIndex: int&lt;/div&gt;&lt;div&gt;+ turnNumber: int&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="180" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="hc_F5L6Nf2BlohNOz1Ib-7" parent="hc_F5L6Nf2BlohNOz1Ib-5" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="180" y="116" as="geometry" />
+        </mxCell>
+        <mxCell id="hc_F5L6Nf2BlohNOz1Ib-8" parent="hc_F5L6Nf2BlohNOz1Ib-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;+ start()&lt;/div&gt;&lt;div&gt;+ nextPhase()&lt;/div&gt;&lt;div&gt;+ getCurrentPhase(): IPhase&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="180" y="124" as="geometry" />
+        </mxCell>
+        <mxCell id="hc_F5L6Nf2BlohNOz1Ib-13" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt; IPhase" vertex="1">
+          <mxGeometry height="144" width="280" x="510" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="hc_F5L6Nf2BlohNOz1Ib-14" parent="hc_F5L6Nf2BlohNOz1Ib-13" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;+ name: String&lt;/div&gt;&lt;div&gt;+ subPhases: List&amp;lt;IPhase&amp;gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="280" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="hc_F5L6Nf2BlohNOz1Ib-15" parent="hc_F5L6Nf2BlohNOz1Ib-13" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="280" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="hc_F5L6Nf2BlohNOz1Ib-16" parent="hc_F5L6Nf2BlohNOz1Ib-13" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;+ isAvailable(Game gameState): bool&lt;/div&gt;&lt;div&gt;+ onEnter(Game gameState)&lt;/div&gt;&lt;div&gt;+ onExit(Game gameState)&lt;/div&gt;&lt;div&gt;+ canPerform(Action action, Game gameState)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="280" y="74" as="geometry" />
+        </mxCell>
+        <mxCell id="hc_F5L6Nf2BlohNOz1Ib-17" edge="1" parent="hc_F5L6Nf2BlohNOz1Ib-13" source="hc_F5L6Nf2BlohNOz1Ib-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;startArrow=diamondThin;startFill=0;startSize=10;" target="hc_F5L6Nf2BlohNOz1Ib-14">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="325" y="14" />
+              <mxPoint x="325" y="34" />
+            </Array>
+            <mxPoint x="300" y="84" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hc_F5L6Nf2BlohNOz1Ib-27" edge="1" parent="1" source="hc_F5L6Nf2BlohNOz1Ib-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;endSize=10;" target="hc_F5L6Nf2BlohNOz1Ib-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="270" y="361" />
+              <mxPoint x="270" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hc_F5L6Nf2BlohNOz1Ib-18" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="TurnFactory" vertex="1">
+          <mxGeometry height="94" width="240" x="10" y="314" as="geometry" />
+        </mxCell>
+        <mxCell id="hc_F5L6Nf2BlohNOz1Ib-19" parent="hc_F5L6Nf2BlohNOz1Ib-18" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- phaseBlueprint: List&amp;lt;IPhases&amp;gt;" vertex="1">
+          <mxGeometry height="30" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="hc_F5L6Nf2BlohNOz1Ib-20" parent="hc_F5L6Nf2BlohNOz1Ib-18" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="56" as="geometry" />
+        </mxCell>
+        <mxCell id="hc_F5L6Nf2BlohNOz1Ib-21" parent="hc_F5L6Nf2BlohNOz1Ib-18" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ createTurn(Player activePlayer): Turn" vertex="1">
+          <mxGeometry height="30" width="240" y="64" as="geometry" />
+        </mxCell>
+        <mxCell id="hc_F5L6Nf2BlohNOz1Ib-29" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Patrón State: Permite alterar el comportamiento de un objeto cuando su estado interno cambia.&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;- State para los turnos: Turn es la clase principal cuyo estado currentPhase cambia, alternando su comporamiento.&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="760" x="50" y="525" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

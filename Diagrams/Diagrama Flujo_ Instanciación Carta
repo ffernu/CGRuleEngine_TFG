@@ -1,0 +1,55 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0" version="29.6.4">
+  <diagram name="Page-1" id="V7rW5PJhc-Z4rFIyB3ms">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ylSXjfjx_JRElRTJr67d-11" edge="1" parent="1" source="ylSXjfjx_JRElRTJr67d-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="ylSXjfjx_JRElRTJr67d-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ylSXjfjx_JRElRTJr67d-1" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" value="Solicitud de Instanciación, provocando llamada CreateCard de la CardFactory" vertex="1">
+          <mxGeometry height="120" width="250" x="60.01" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ylSXjfjx_JRElRTJr67d-2" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" value="&lt;div&gt;Carta creada y lista&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="250" x="58.76" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="ylSXjfjx_JRElRTJr67d-3" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" value="&lt;div&gt;La solicitud puede venir de distintas fuentes:&lt;/div&gt;&lt;div&gt;-&amp;nbsp; Se inicializa el Game y hay que crear las cartas para añadirlas a las IZones que correspondan&lt;/div&gt;&lt;div&gt;- Un IEffect que haga que un Player obtenga una carta de fuera de la partida (Ej: tokens de MTG)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="50" x="310" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ylSXjfjx_JRElRTJr67d-12" edge="1" parent="1" source="ylSXjfjx_JRElRTJr67d-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="ylSXjfjx_JRElRTJr67d-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ylSXjfjx_JRElRTJr67d-4" parent="1" style="html=1;dashed=0;whiteSpace=wrap;" value="Localización de la CardTemplate de la carta solicitada (mediante Id)" vertex="1">
+          <mxGeometry height="70" width="218.75" x="75.63" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="ylSXjfjx_JRElRTJr67d-13" edge="1" parent="1" source="ylSXjfjx_JRElRTJr67d-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="ylSXjfjx_JRElRTJr67d-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ylSXjfjx_JRElRTJr67d-5" parent="1" style="html=1;dashed=0;whiteSpace=wrap;" value="Identificación del constructor a utilizar" vertex="1">
+          <mxGeometry height="70" width="220" x="74.38" y="395" as="geometry" />
+        </mxCell>
+        <mxCell id="ylSXjfjx_JRElRTJr67d-6" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" value="&lt;div&gt;CardFactory guarda un constructor para cada tipo de ICard.&lt;/div&gt;&lt;div&gt;El CardTemplate tiene atributo Type para establecer el tipo de ICard que describe.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="50" x="293.13" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="ylSXjfjx_JRElRTJr67d-14" edge="1" parent="1" source="ylSXjfjx_JRElRTJr67d-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="ylSXjfjx_JRElRTJr67d-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ylSXjfjx_JRElRTJr67d-7" parent="1" style="html=1;dashed=0;whiteSpace=wrap;" value="Construcción de la carta" vertex="1">
+          <mxGeometry height="70" width="218.75" x="74.38" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="ylSXjfjx_JRElRTJr67d-8" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" value="&lt;div&gt;Pasamos de una CardTemplate (BluePrint) a una ICard (Objeto complejo).&lt;/div&gt;&lt;div&gt;Se asignan todas las Properties, Tags y demás atributos de CardTemplate a la ICard.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="50" x="293.13" y="525" as="geometry" />
+        </mxCell>
+        <mxCell id="ylSXjfjx_JRElRTJr67d-15" edge="1" parent="1" source="ylSXjfjx_JRElRTJr67d-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="ylSXjfjx_JRElRTJr67d-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ylSXjfjx_JRElRTJr67d-9" parent="1" style="html=1;dashed=0;whiteSpace=wrap;" value="Mover la carta a la IZone deseada." vertex="1">
+          <mxGeometry height="70" width="218.75" x="74.38" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="ylSXjfjx_JRElRTJr67d-10" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" value="Fase vital de creación. Una ICard que no esté en una IZone es como si no existiese para el Game." vertex="1">
+          <mxGeometry height="100" width="50" x="293.13" y="675" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

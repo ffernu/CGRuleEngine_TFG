@@ -1,0 +1,65 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="joBlia7CZBwL2xMFj7gN-13" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="joBlia7CZBwL2xMFj7gN-0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="joBlia7CZBwL2xMFj7gN-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="joBlia7CZBwL2xMFj7gN-0" parent="WIyWlLk6GJQsqaUBKTNV-1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" value="Petición de carga de Cards en formato .json al iniciar el juego" vertex="1">
+          <mxGeometry height="90" width="200" x="90" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="joBlia7CZBwL2xMFj7gN-12" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="joBlia7CZBwL2xMFj7gN-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="joBlia7CZBwL2xMFj7gN-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="60" y="245" />
+              <mxPoint x="60" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="joBlia7CZBwL2xMFj7gN-1" parent="WIyWlLk6GJQsqaUBKTNV-1" style="html=1;dashed=0;whiteSpace=wrap;" value="Creación de CardDataBase y llamada a LoadAllTemplates()" vertex="1">
+          <mxGeometry height="70" width="195" x="92.5" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="joBlia7CZBwL2xMFj7gN-10" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="joBlia7CZBwL2xMFj7gN-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="joBlia7CZBwL2xMFj7gN-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="joBlia7CZBwL2xMFj7gN-16" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="joBlia7CZBwL2xMFj7gN-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="joBlia7CZBwL2xMFj7gN-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="joBlia7CZBwL2xMFj7gN-3" parent="WIyWlLk6GJQsqaUBKTNV-1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" value="Quedan .json por trasformar en CardTemplate" vertex="1">
+          <mxGeometry height="140" width="137.5" x="121.25" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="joBlia7CZBwL2xMFj7gN-4" parent="WIyWlLk6GJQsqaUBKTNV-1" style="html=1;dashed=0;whiteSpace=wrap;" value="Deserialize del siguiente .json a un CardTemplate" vertex="1">
+          <mxGeometry height="70" width="197.5" x="330" y="435" as="geometry" />
+        </mxCell>
+        <mxCell id="joBlia7CZBwL2xMFj7gN-9" parent="WIyWlLk6GJQsqaUBKTNV-1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" value="Los CardTemplate quedan guardados en un Dictionary&amp;lt;String, CardTemplate&amp;gt;" vertex="1">
+          <mxGeometry height="100" width="200" x="90" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="joBlia7CZBwL2xMFj7gN-17" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="joBlia7CZBwL2xMFj7gN-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="joBlia7CZBwL2xMFj7gN-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="429" y="350" />
+              <mxPoint x="190" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="joBlia7CZBwL2xMFj7gN-18" parent="WIyWlLk6GJQsqaUBKTNV-1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" value="&lt;div&gt;El proceso de Carga es costoso si se tiene un gran número de cartas,&lt;/div&gt;&lt;div&gt;la petición se llevaría a cabo al ejecutar el videojuego, en la carga inicial.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="50" x="290" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="joBlia7CZBwL2xMFj7gN-19" parent="WIyWlLk6GJQsqaUBKTNV-1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" value="&lt;div&gt;Usando Newtonsoft.json;&lt;/div&gt;&lt;div&gt;- La librería trata los datos numéricos como longs.&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp; Nosotros los transformamos en Integer para mantener la consistencia en el código&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="50" x="528" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="joBlia7CZBwL2xMFj7gN-20" parent="WIyWlLk6GJQsqaUBKTNV-1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" value="El objeto CardDataBase resultante será utilizado por FactoryCard" vertex="1">
+          <mxGeometry height="100" width="50" x="290" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="joBlia7CZBwL2xMFj7gN-21" parent="WIyWlLk6GJQsqaUBKTNV-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Si" vertex="1">
+          <mxGeometry height="30" width="60" x="258.75" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="joBlia7CZBwL2xMFj7gN-22" parent="WIyWlLk6GJQsqaUBKTNV-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="No" vertex="1">
+          <mxGeometry height="30" width="60" x="180" y="550" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
