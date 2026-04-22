@@ -14,7 +14,7 @@ namespace CGRuleEngine_TFG.Execution
         // Execute the effect of the stack entry and its context, modifying the game state as necessary
         public void Resolve(Game gameState)
         {
-            Effect.execute(this.Context, gameState);
+            Effect.execute(this.Context);
         }
     }
 }
