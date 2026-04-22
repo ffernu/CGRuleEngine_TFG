@@ -1,0 +1,50 @@
+name: Build and Test C#
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  # ==========================================
+  # JOB 1: COMPILATION
+  # ==========================================
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download code
+      uses: actions/checkout@v4
+
+    - name: Configure .NET 10.0
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore CGRuleEngine_TFG.slnx
+
+    - name: Compilate project
+      run: dotnet build CGRuleEngine_TFG.slnx --configuration Release --no-restore
+
+  # ==========================================
+  # JOB 2: TEST EXECUTION
+  # ==========================================
+  test:
+    name: Test
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download code
+      uses: actions/checkout@v4
+
+    - name: Configurre .NET 10.0
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+
+    - name: Execute test
+      run: dotnet test CGRuleEngine_TFG.slnx --configuration Release --verbosity normal

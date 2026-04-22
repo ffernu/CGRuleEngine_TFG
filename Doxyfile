@@ -1,0 +1,21 @@
+# Basic configuration CGRuleEngine_TFG
+
+PROJECT_NAME           = "CGRuleEngine TFG"
+PROJECT_BRIEF          = "Motor de Reglas para Juegos de Cartas integrable en motores gráficos comerciales"
+OUTPUT_DIRECTORY       = html
+GENERATE_LATEX         = NO
+GENERATE_HTML          = YES
+
+# C# configuration
+OPTIMIZE_OUTPUT_JAVA   = YES
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+
+# Code location
+INPUT                  = .
+RECURSIVE              = YES
+FILE_PATTERNS          = *.cs
+
+# Exclude test project
+EXCLUDE_PATTERN        = */CGRuleEngine_TFG.Test/*
