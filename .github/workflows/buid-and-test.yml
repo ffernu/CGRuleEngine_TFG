@@ -24,10 +24,10 @@ jobs:
         dotnet-version: '10.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore NombreDeTuSolucion.sln
+      run: dotnet restore CGRuleEngine_TFG.sln
 
     - name: Compilate project
-      run: dotnet build NombreDeTuSolucion.sln --configuration Release --no-restore
+      run: dotnet build CGRuleEngine_TFG.sln --configuration Release --no-restore
 
   # ==========================================
   # JOB 2: TEST EXECUTION
@@ -47,4 +47,4 @@ jobs:
         dotnet-version: '10.0.x'
 
     - name: Execute test
-      run: dotnet test NombreDeTuSolucion.sln --configuration Release --verbosity normal
+      run: dotnet test CGRuleEngine_TFG.sln --configuration Release --verbosity normal
