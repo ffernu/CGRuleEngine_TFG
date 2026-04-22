@@ -1,0 +1,32 @@
+name: Generate Doxygen Documentation
+
+on:
+  push:
+    branches: [ "main", "master" ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy-docs:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Download code
+      uses: actions/checkout@v4
+
+    - name: Doxygen instalation
+      run: sudo apt-get update && sudo apt-get install -y doxygen
+
+    - name: Doxygen execution
+      run: doxygen Doxyfile
+
+    - name: Prepare files for GitHub Pages
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: './html'
+
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v4
