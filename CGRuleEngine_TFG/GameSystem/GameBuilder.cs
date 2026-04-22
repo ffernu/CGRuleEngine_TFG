@@ -12,7 +12,6 @@ namespace CGRuleEngine_TFG.GameSystem
     {
         public List<Player> Players { get; set; } = new List<Player>();
         public TurnFactory TemplateTurn { get; set; }
-        public ActionStack Stack { get; set; }
         public CardFactory CardFactory { get; set; }
 
         // Constructor that initializes the properties of the GameBuilder class with default values
@@ -28,13 +27,6 @@ namespace CGRuleEngine_TFG.GameSystem
         public GameBuilder WithPlayer(Player player)
         {
             Players.Add(player);
-            return this;
-        }
-
-        // Method to set the current turn in the GameBuilder class and return the GameBuilder object for method chaining
-        public GameBuilder SetStack(ActionStack stack)
-        {
-            this.Stack = stack;
             return this;
         }
 

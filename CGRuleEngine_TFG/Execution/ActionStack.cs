@@ -8,6 +8,13 @@ namespace CGRuleEngine_TFG.Execution
     public class ActionStack
     {
         public Stack<StackEntry> Entries = new Stack<StackEntry>();
+        public IGameState gameState { get; set; }
+
+        // Constructor that takes an IGameState object as a parameter and initializes the gameState property of the ActionStack class with the provided game state
+        public ActionStack(IGameState gameState)
+        {
+            this.gameState = gameState;
+        }
 
         // Push a new entry onto the stack
         public void Push(StackEntry entry)
@@ -19,8 +26,7 @@ namespace CGRuleEngine_TFG.Execution
         public void Pop()
         {
             StackEntry entry = this.Entries.Pop();
-            Game gameState = null; // TODO: Get the current game state from somewhere
-            entry.Resolve(gameState);
+            entry.Resolve(this.gameState);
         }
 
         // Check if the stack is empty
@@ -34,6 +40,5 @@ namespace CGRuleEngine_TFG.Execution
         {
             return this.Entries.Peek();
         }
-
     }
 }

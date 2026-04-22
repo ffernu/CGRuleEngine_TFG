@@ -10,9 +10,12 @@ using System.Text;
 
 namespace CGRuleEngine_TFG.GameSystem
 {
-    public class Game
+    public class Game : IGameState
     {
         public List<Player> Players { get; set; } = new List<Player>();
+
+        // Explicit implementation of the Players property from the IGameState interface, this allows the Players property to be accessed as an IReadOnlyList<Player> when accessed through an IGameState reference, while still allowing it to be modified as a List<Player> when accessed through a Game reference
+        IReadOnlyList<Player> IGameState.Players => this.Players;
         public Player? ActivePlayer { get; set; }
         public CardFactory CardFactory { get; set; }
         public TurnFactory TemplateTurn { get; set; }
@@ -31,7 +34,7 @@ namespace CGRuleEngine_TFG.GameSystem
             this.CardFactory = builder.CardFactory;
             this.CurrentTurn = null; // The current turn will be initialized when the game starts, it is set to null for now
             this.TurnNumber = 0;
-            this.Stack = builder.Stack;
+            this.Stack = new ActionStack(this);
             this.IsGameOver = false;
             this.results = new Dictionary<Player, int>();
         }
