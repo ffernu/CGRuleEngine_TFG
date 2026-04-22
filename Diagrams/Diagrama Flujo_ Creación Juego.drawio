@@ -1,0 +1,64 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="ZkkRfLsqgqcxX7r8_yQc">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-15" edge="1" parent="1" source="g1Uo-l-g5gePhHds9ivQ-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="g1Uo-l-g5gePhHds9ivQ-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="El jugador quiere empezar una partida" vertex="1">
+          <mxGeometry height="100" width="205" x="225" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-17" edge="1" parent="1" source="g1Uo-l-g5gePhHds9ivQ-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="g1Uo-l-g5gePhHds9ivQ-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Creación Player (uno o mas), utilizando PlayerBuilder" vertex="1">
+          <mxGeometry height="80" width="170" x="242.5" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-16" edge="1" parent="1" source="g1Uo-l-g5gePhHds9ivQ-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="g1Uo-l-g5gePhHds9ivQ-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-5" parent="1" style="html=1;dashed=0;whiteSpace=wrap;" value="Creación de las IZones necesarias" vertex="1">
+          <mxGeometry height="80" width="170" x="242.5" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-18" edge="1" parent="1" source="g1Uo-l-g5gePhHds9ivQ-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="g1Uo-l-g5gePhHds9ivQ-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-6" parent="1" style="html=1;dashed=0;whiteSpace=wrap;" value="Creación Game, utilizando GameBuilder" vertex="1">
+          <mxGeometry height="80" width="165" x="245" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-19" edge="1" parent="1" source="g1Uo-l-g5gePhHds9ivQ-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="g1Uo-l-g5gePhHds9ivQ-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-7" parent="1" style="html=1;dashed=0;whiteSpace=wrap;" value="Creación del TurnFactory&amp;nbsp;" vertex="1">
+          <mxGeometry height="80" width="170" x="242.5" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-8" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_1;align=left;pointerEvents=1;rotation=-180;" value="" vertex="1">
+          <mxGeometry height="515" width="160" x="345" y="285" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-10" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" value="&lt;div&gt;El proceso de creación de los componentes de la partida son responsabilidad del desarrollador,&amp;nbsp;&lt;/div&gt;&lt;div&gt;teniendo libertad de decidir donde y como hacerlo.&lt;/div&gt;&lt;div&gt;Para crear un Game utilizando GameBuilder es necesario tener creado previamente&amp;nbsp;&lt;/div&gt;&lt;div&gt;uno o mas Player (a su vez, necesita tener IZones), uno o mas TurnFactory, un Stack, etc.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="50" x="505" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-11" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" value="El Game comienza" vertex="1">
+          <mxGeometry height="100" width="205.25" x="225" y="1120" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-20" edge="1" parent="1" source="g1Uo-l-g5gePhHds9ivQ-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="g1Uo-l-g5gePhHds9ivQ-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-12" parent="1" style="html=1;dashed=0;whiteSpace=wrap;" value="Llamada a InicializeGame()" vertex="1">
+          <mxGeometry height="80" width="170" x="242.5" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-21" edge="1" parent="1" source="g1Uo-l-g5gePhHds9ivQ-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="g1Uo-l-g5gePhHds9ivQ-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-13" parent="1" style="html=1;dashed=0;whiteSpace=wrap;" value="Llamada a StartGame()" vertex="1">
+          <mxGeometry height="80" width="172.5" x="241.25" y="980" as="geometry" />
+        </mxCell>
+        <mxCell id="g1Uo-l-g5gePhHds9ivQ-14" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" value="&lt;div&gt;Llama a los métodos Initialize() de todas las IZones.&lt;/div&gt;&lt;div&gt;Se crean y guardan las ICards necesarias en las IZones necesarias.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Es posible que se añadan cosas. En resumen: se pone todo a punto&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="50" x="408" y="830" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

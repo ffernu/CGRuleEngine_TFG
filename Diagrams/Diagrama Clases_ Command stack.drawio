@@ -1,0 +1,127 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0" version="29.6.1">
+  <diagram name="Page-1" id="baD-Gv0Tb19hyT3ANiaX">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-36" edge="1" parent="1" source="A9-oxc9YSRB3OuOxVx8G-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;startArrow=diamondThin;startFill=1;startSize=10;" target="A9-oxc9YSRB3OuOxVx8G-28">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="260" />
+              <mxPoint x="630" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-5" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Stack" vertex="1">
+          <mxGeometry height="130" width="260" x="330" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-6" parent="A9-oxc9YSRB3OuOxVx8G-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ entries: Stack&amp;lt;StackEntry&amp;gt;" vertex="1">
+          <mxGeometry height="26" width="260" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-7" parent="A9-oxc9YSRB3OuOxVx8G-5" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="260" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-8" parent="A9-oxc9YSRB3OuOxVx8G-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;+ push(IEffect effect, EffectContext context)&lt;/div&gt;&lt;div&gt;+ pop()&lt;/div&gt;&lt;div&gt;+ isEmpty()&lt;/div&gt;&lt;div&gt;+ peek(): StackEntry&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="260" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-38" edge="1" parent="1" source="A9-oxc9YSRB3OuOxVx8G-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;startArrow=open;startFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="890" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-41" edge="1" parent="1" source="A9-oxc9YSRB3OuOxVx8G-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;dashed=1;dashPattern=8 8;" target="A9-oxc9YSRB3OuOxVx8G-20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1140" y="159" />
+              <mxPoint x="1140" y="159" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-12" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="EffectContext" vertex="1">
+          <mxGeometry height="74" width="180" x="920" y="116" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-13" parent="A9-oxc9YSRB3OuOxVx8G-12" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;+ sourceCard: ICard&lt;/div&gt;&lt;div&gt;+ target: List&amp;lt;ITargeteable&amp;gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="180" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-14" parent="A9-oxc9YSRB3OuOxVx8G-12" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="180" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-39" edge="1" parent="1" source="A9-oxc9YSRB3OuOxVx8G-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 8;startArrow=block;startFill=0;endArrow=none;endFill=0;" target="A9-oxc9YSRB3OuOxVx8G-32">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1220" y="330" />
+              <mxPoint x="1220" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-16" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt; IEffect" vertex="1">
+          <mxGeometry height="104" width="230" x="920" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-17" parent="A9-oxc9YSRB3OuOxVx8G-16" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;+ name: String&lt;/div&gt;&lt;div&gt;+ description: String&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="230" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-18" parent="A9-oxc9YSRB3OuOxVx8G-16" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="230" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-19" parent="A9-oxc9YSRB3OuOxVx8G-16" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ execute(EffectContext context): bool" vertex="1">
+          <mxGeometry height="30" width="230" y="74" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-20" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt; ITargeteable" vertex="1">
+          <mxGeometry height="86" width="160" x="1240" y="116" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-21" parent="A9-oxc9YSRB3OuOxVx8G-20" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ field: type" vertex="1">
+          <mxGeometry height="26" width="160" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-22" parent="A9-oxc9YSRB3OuOxVx8G-20" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="160" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-23" parent="A9-oxc9YSRB3OuOxVx8G-20" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ method(type): type" vertex="1">
+          <mxGeometry height="26" width="160" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-37" edge="1" parent="1" source="A9-oxc9YSRB3OuOxVx8G-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;" target="A9-oxc9YSRB3OuOxVx8G-16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="890" y="250" />
+              <mxPoint x="890" y="322" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-28" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="StackEntry" vertex="1">
+          <mxGeometry height="104" width="180" x="670" y="202" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-29" parent="A9-oxc9YSRB3OuOxVx8G-28" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;+ effect: IEffect&lt;/div&gt;&lt;div&gt;+ context: EffectContext&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="180" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-30" parent="A9-oxc9YSRB3OuOxVx8G-28" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="180" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-31" parent="A9-oxc9YSRB3OuOxVx8G-28" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ resolve(Game gameState)" vertex="1">
+          <mxGeometry height="30" width="180" y="74" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-40" edge="1" parent="1" source="A9-oxc9YSRB3OuOxVx8G-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=0;endSize=10;" target="A9-oxc9YSRB3OuOxVx8G-16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1220" y="310" />
+              <mxPoint x="1220" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-32" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="CompositeEffect" vertex="1">
+          <mxGeometry height="100" width="230" x="1240" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-33" parent="A9-oxc9YSRB3OuOxVx8G-32" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ children: List&amp;lt;IEffect&amp;gt;" vertex="1">
+          <mxGeometry height="26" width="230" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-34" parent="A9-oxc9YSRB3OuOxVx8G-32" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="230" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-35" parent="A9-oxc9YSRB3OuOxVx8G-32" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;+ add(IEffect effect)&lt;/div&gt;&lt;div&gt;+ execute(EffectContext context): bool&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="230" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="A9-oxc9YSRB3OuOxVx8G-42" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Patrón Command: Permite convertir solicitudes en objetos independientes.&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;- Stack y Efectos: Convertimos las solicitudes (IAction) en objetos independientes (IEffect). Éstos a su vez se agrupan con el correspondiente EffectContext para que el Stack lo reciba en forma de StackEntry.&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Patrón Composite: Permite componer objetos en estructuras de arbol.&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;- CompositeEffect: Permite agrupar un conjunto de IEffects similares fruto de la misma IAction en un solo IEffect y por lo tanto en una sola StackEntry.&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="1340" x="210" y="440" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

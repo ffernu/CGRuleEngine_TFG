@@ -1,0 +1,78 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="pBaYEowwWWALWib6RC0d">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-11" edge="1" parent="1" source="N0oPhltcI4M7t2UsCeeB-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="N0oPhltcI4M7t2UsCeeB-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Solicitud de instanciación, provocando llamada CreateEffect de la EffectFactory" vertex="1">
+          <mxGeometry height="110" width="260" x="100" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-14" edge="1" parent="1" source="N0oPhltcI4M7t2UsCeeB-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="N0oPhltcI4M7t2UsCeeB-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Identificación del constructor a utilizar" vertex="1">
+          <mxGeometry height="100" width="190" x="135" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-15" edge="1" parent="1" source="N0oPhltcI4M7t2UsCeeB-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="N0oPhltcI4M7t2UsCeeB-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Construcción del efecto" vertex="1">
+          <mxGeometry height="100" width="190" x="135" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-12" edge="1" parent="1" source="N0oPhltcI4M7t2UsCeeB-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="N0oPhltcI4M7t2UsCeeB-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-13" edge="1" parent="1" source="N0oPhltcI4M7t2UsCeeB-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="N0oPhltcI4M7t2UsCeeB-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-4" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="Es un CompoundEffect" vertex="1">
+          <mxGeometry height="130" width="140" x="160" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-17" edge="1" parent="1" source="N0oPhltcI4M7t2UsCeeB-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="N0oPhltcI4M7t2UsCeeB-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Creación del objeto CompoundEffect" vertex="1">
+          <mxGeometry height="100" width="190" x="515" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-16" edge="1" parent="1" source="N0oPhltcI4M7t2UsCeeB-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="N0oPhltcI4M7t2UsCeeB-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Recorrer Types de los efectos de los que está compuesto e identificar constructores necesarios." vertex="1">
+          <mxGeometry height="100" width="190" x="515" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-18" edge="1" parent="1" source="N0oPhltcI4M7t2UsCeeB-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="N0oPhltcI4M7t2UsCeeB-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="610" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Añadir al CompoundEffect los IEffects individuales" vertex="1">
+          <mxGeometry height="100" width="190" x="515" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-19" edge="1" parent="1" source="N0oPhltcI4M7t2UsCeeB-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="N0oPhltcI4M7t2UsCeeB-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Asignar el IEffect a la ICard a la que pertenece" vertex="1">
+          <mxGeometry height="100" width="190" x="325" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-10" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Proceso finalizado, a espera de ser utilizado" vertex="1">
+          <mxGeometry height="110" width="260" x="290" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-20" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Si" vertex="1">
+          <mxGeometry height="30" width="60" x="370" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="N0oPhltcI4M7t2UsCeeB-21" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="No" vertex="1">
+          <mxGeometry height="30" width="60" x="220" y="360" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
