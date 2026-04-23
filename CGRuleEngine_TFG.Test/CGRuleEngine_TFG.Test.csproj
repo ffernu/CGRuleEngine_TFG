@@ -26,7 +26,6 @@
   <ItemGroup>
     <Folder Include="Entities\Cards\" />
     <Folder Include="Entities\Players\" />
-    <Folder Include="Entities\Zones\" />
   </ItemGroup>
 
 </Project>
