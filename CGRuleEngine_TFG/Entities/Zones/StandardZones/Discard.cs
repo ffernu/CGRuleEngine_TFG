@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CGRuleEngine_TFG.Entities.Zones
+namespace CGRuleEngine_TFG.Entities.Zones.StandardZones
 {
     public class Discard : BaseZone
     {

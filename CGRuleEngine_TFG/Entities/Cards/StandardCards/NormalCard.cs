@@ -7,7 +7,7 @@ using System.Text;
 using System.Buffers;
 using CGRuleEngine_TFG.Entities.Cards.DataBase;
 
-namespace CGRuleEngine_TFG.Entities.Cards
+namespace CGRuleEngine_TFG.Entities.Cards.StandardCards
 {
     public class NormalCard : CardBase
     {

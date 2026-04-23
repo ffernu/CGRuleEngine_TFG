@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CGRuleEngine_TFG.Execution.Effects
+namespace CGRuleEngine_TFG.Execution.Effects.StandardEffects
 {
     // Enum to represent the type of action that can be performed on a tag, such as adding or removing a tag
     public enum TagAction

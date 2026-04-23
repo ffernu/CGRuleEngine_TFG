@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using CGRuleEngine_TFG.Execution.Effects;
 
-namespace CGRuleEngine_TFG.Entities.Cards
+namespace CGRuleEngine_TFG.Entities.Cards.StandardCards
 {
     public class DSCard : CardBase
     {

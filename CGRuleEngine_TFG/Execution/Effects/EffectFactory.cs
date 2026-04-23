@@ -1,4 +1,5 @@
 ﻿using CGRuleEngine_TFG.Entities.Cards.DataBase;
+using CGRuleEngine_TFG.Execution.Effects.StandardEffects;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CGRuleEngine_TFG.Execution.Effects
+namespace CGRuleEngine_TFG.Execution.Effects.StandardEffects
 {
     // Enum to represent the type of operation that can be performed on a property, such as adding, subtracting, or setting a value
     public enum OperationType
