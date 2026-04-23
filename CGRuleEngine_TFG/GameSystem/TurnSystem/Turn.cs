@@ -8,12 +8,12 @@ namespace CGRuleEngine_TFG.GameSystem.TurnSystem
     public class Turn
     {
         public Player ActivePlayer { get; set; }
-        public List<IPhase> Phases { get; set; } = new List<IPhase>();
-        public IPhase CurrentPhase { get; set; }
+        public List<Phase> Phases { get; set; } = new List<Phase>();
+        public Phase CurrentPhase { get; set; }
         public int CurrentPhaseIndex { get; set; }
 
         // Constructor that initializes the properties of the Turn class with default values
-        public Turn(Player player, List<IPhase> phases)
+        public Turn(Player player, List<Phase> phases)
         {
             this.ActivePlayer = player;
             this.Phases = phases;
@@ -21,7 +21,7 @@ namespace CGRuleEngine_TFG.GameSystem.TurnSystem
         }
 
         // Method to start the turn, this method checks if the turn has at least one phase before starting the turn. If the turn has at least one phase, it sets the current phase index to 0 and initializes the current phase with the first phase in the list of phases
-        public void Start()
+        public void Start(Game game)
         {
             if (Phases.Count == 0)
             {
@@ -29,24 +29,27 @@ namespace CGRuleEngine_TFG.GameSystem.TurnSystem
             }
             this.CurrentPhaseIndex = 0;
             this.CurrentPhase = Phases[CurrentPhaseIndex];
-            this.CurrentPhase.OnEnter();
+            this.CurrentPhase.OnEnter(game);
         }
 
-        // Method to move to the next phase of the turn, this method checks if the current phase index is less than the last index of the list of phases before moving to the next phase. If the current phase index is less than the last index, it calls the OnExit method of the current phase, increments the current phase index, updates the current phase with the next phase in the list of phases and calls the OnEnter method of the new current phase
-        public void NextPhase()
+        // Method to move to the next phase of the turn, this method checks if the current phase index is less than the total number of phases in the turn. If it is not, it returns false indicating that there are no more phases left in the turn
+        public bool NextPhase(Game game)
         {
+            this.CurrentPhase.OnExit(game);
+
             if (CurrentPhaseIndex >= Phases.Count - 1)
             {
-                throw new InvalidOperationException("The turn has already reached the last phase, cannot move to the next phase");
+                return false;
             }
-            this.CurrentPhase.OnExit();
             this.CurrentPhaseIndex++;
             this.CurrentPhase = Phases[CurrentPhaseIndex];
-            this.CurrentPhase.OnEnter();
+            this.CurrentPhase.OnEnter(game);
+
+            return true;
         }
 
         // Method to get the current phase of the turn, this method returns the current phase of the turn
-        public IPhase GetCurrentPhase()
+        public Phase GetCurrentPhase()
         {
             return this.CurrentPhase;
         }

@@ -7,10 +7,10 @@ namespace CGRuleEngine_TFG.GameSystem.TurnSystem
 {
     public class TurnFactory
     {
-        public List<IPhase> Phases {  get; set; } = new List<IPhase>();
+        public List<Phase> Phases {  get; set; } = new List<Phase>();
 
         // Constructor that initializes the properties of the TurnFactory class with default values
-        public TurnFactory(List<IPhase> phases)
+        public TurnFactory(List<Phase> phases)
         {
             this.Phases = FlattenPhases(phases);
         }
@@ -23,9 +23,9 @@ namespace CGRuleEngine_TFG.GameSystem.TurnSystem
         }
 
         // This method flattens the nested phases into a single list of phases for easier processing
-        private List<IPhase> FlattenPhases(List<IPhase> nestedPhases)
+        private List<Phase> FlattenPhases(List<Phase> nestedPhases)
         {
-            List<IPhase> flatList = new List<IPhase>();
+            List<Phase> flatList = new List<Phase>();
 
             foreach (var phase in nestedPhases)
             {

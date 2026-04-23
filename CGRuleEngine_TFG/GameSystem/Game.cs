@@ -2,6 +2,7 @@
 using CGRuleEngine_TFG.Entities.Players;
 using CGRuleEngine_TFG.Entities.Zones;
 using CGRuleEngine_TFG.Execution;
+using CGRuleEngine_TFG.Execution.Actions;
 using CGRuleEngine_TFG.GameSystem.TurnSystem;
 using System;
 using System.Collections;
@@ -10,7 +11,7 @@ using System.Text;
 
 namespace CGRuleEngine_TFG.GameSystem
 {
-    public class Game : IGameState
+    public class Game : IGameState, IActionHandler
     {
         public List<Player> Players { get; set; } = new List<Player>();
 
@@ -24,6 +25,8 @@ namespace CGRuleEngine_TFG.GameSystem
         public ActionStack Stack { get; set; }
         public bool IsGameOver { get; set; }
         public Dictionary<Player, int> results { get; set; }
+        public Player? PriorityPlayer { get; set; }
+        private int consecutivePasses = 0;
 
         // Constructor that takes a GameBuilder object as a parameter and initializes the properties of the Game class with the values from the builder
         public Game(GameBuilder builder)
@@ -42,7 +45,7 @@ namespace CGRuleEngine_TFG.GameSystem
         // Method to initialize the game, this method can be used to set up the initial game state, such as shuffling decks, drawing starting hands, etc. It is marked as virtual to allow for customization in derived classes
         public virtual void initializeGame()
         {
-            foreach (Player player in Players)
+            foreach (Player player in this.Players)
             {
                 // Initialize player zones, shuffle decks, draw starting hands, etc.
                 foreach (IZone zone in player.Zones.Values)
@@ -55,7 +58,7 @@ namespace CGRuleEngine_TFG.GameSystem
         // Method to start the game, this method checks if the game is already over or if the stack is not empty before starting the game. If the game is not over and the stack is empty, it calls the nextTurn method to start the first turn of the game
         public void startGame()
         {
-            if (IsGameOver)
+            if (this.IsGameOver)
             {
                 throw new InvalidOperationException("The game is already over");
             }
@@ -63,34 +66,34 @@ namespace CGRuleEngine_TFG.GameSystem
             {
                 throw new InvalidOperationException("The stack is not empty, cannot start the game");
             }
-            this.nextTurn(Players[0]);
+            this.nextTurn(this.Players[0]);
         }
 
         // Method to start the next turn of the game, this method checks if the game is already over before starting the next turn. If the game is not over, it sets the active player to the next player in the list of players, creates a new turn using the template turn and starts it
         public void nextTurn()
         {
-            if (IsGameOver)
+            if (this.IsGameOver)
             {
                 throw new InvalidOperationException("The game is already over");
             }
-            int lastPlayer = Players.IndexOf(ActivePlayer);
-            this.ActivePlayer = Players[lastPlayer + 1];
+            int lastPlayer = this.Players.IndexOf(this.ActivePlayer);
+            this.ActivePlayer = this.Players[(lastPlayer + 1) % this.Players.Count];
             this.TurnNumber += 1;
-            this.CurrentTurn = this.TemplateTurn.CreateTurn(ActivePlayer);
-            this.CurrentTurn.Start();
+            this.CurrentTurn = this.TemplateTurn.CreateTurn(this.ActivePlayer);
+            this.CurrentTurn.Start(this);
         }
 
         // Method to start the next turn of the game, this method checks if the game is already over before starting the next turn. If the game is not over, it sets the active player to the given player, creates a new turn using the template turn and starts it
         public void nextTurn(Player player)
         {
-            if (IsGameOver)
+            if (this.IsGameOver)
             {
                 throw new InvalidOperationException("The game is already over");
             }
             this.ActivePlayer = player;
             this.TurnNumber += 1;
             this.CurrentTurn = this.TemplateTurn.CreateTurn(ActivePlayer);
-            this.CurrentTurn.Start();
+            this.CurrentTurn.Start(this);
         }
 
         // Method to check the win condition of the game, this method is marked as virtual to allow for customization in derived classes. It can be used to check if any player has met the win condition and set the IsGameOver property to true if the game is over
@@ -105,5 +108,47 @@ namespace CGRuleEngine_TFG.GameSystem
             return results[player];
         }
 
+        // Method to pass priority to the next player, this method checks if the given player is the current priority player, if it is not, it returns without doing anything. If it is, it increments the consecutivePasses counter and sets the next player in the list as the new priority player. If the number of consecutive passes is equal to the number of players, it resets the counter and checks if the stack is empty. If the stack is not empty, it pops an action from the stack and sets the priority player to the active player. If the stack is empty, it calls the nextPhase method of the current turn to move to the next phase of the turn
+        public void PassPriority(Player player)
+        {
+            if (player != this.PriorityPlayer) return;
+            this.consecutivePasses++;
+
+            int currentIndex = this.Players.IndexOf(this.PriorityPlayer);
+            this.PriorityPlayer = this.Players[(currentIndex + 1) % this.Players.Count];
+
+            if (this.consecutivePasses >= this.Players.Count)
+            {
+                this.ResetPriority();
+                if (!this.Stack.IsEmpty())
+                {
+                    this.Stack.Pop();
+                }
+                else
+                {
+                    bool turnIsStillActive = this.CurrentTurn.NextPhase(this);
+
+                    // If the turn did end after moving to the next phase, we need to start the next turn
+                    if (!turnIsStillActive)
+                    {
+                        this.nextTurn();
+                    }
+                }
+            }
+        }
+
+        // Method to end the game, this method sets the IsGameOver property to true and can be used to calculate the results
+        public void EndGame(Player loser)
+        {
+            this.IsGameOver = true;
+            // TODO: Implement an standard logic to calculate the results of the game and fill the results dictionary with the rank of each player
+        }
+
+        // Method to reset the priority, this method sets the priority player to the active player and resets the consecutivePasses counter
+        public void ResetPriority()
+        {
+            this.PriorityPlayer = this.ActivePlayer;
+            this.consecutivePasses = 0;
+        }
     }
 }

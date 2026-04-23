@@ -1,5 +1,4 @@
 ﻿using CGRuleEngine_TFG.Entities.Players;
-using CGRuleEngine_TFG.Execution.Effects;
 using CGRuleEngine_TFG.GameSystem;
 using System;
 using System.Collections.Generic;
@@ -9,17 +8,13 @@ namespace CGRuleEngine_TFG.Execution.Actions
 {
     public interface IAction
     {
-        public Player Player { get; }
-        public String Name { get; }
-        public Object Source { get; }
-        public List<ITargetable> Targets { get; }
+        // The source player of the action, this property is used to identify the player who is performing the action
+        Player SourcePlayer { get; }
 
-        // Convert the action into a list of effects that can be added to the stack for execution
-        public List<IEffect> ToEffects(Game gameState)
-        {
-            List<IEffect> effects = new List<IEffect>();
-            // TODO: Implement logic to convert the action into a list of effects based on the game state and the action's properties.
-            return effects;
-        }
+        // Checks if the action is valid in the current game state, this method is used to determine if the action can be performed or not
+        bool IsValid(IGameState gameState);
+
+        // The method that will execute the action, this method is used to perform the action and move its effects to the stack
+        void Commit(IActionHandler handler);
     }
 }
