@@ -1,4 +1,5 @@
-﻿using CGRuleEngine_TFG.Entities.Cards.DataBase;
+﻿using CGRuleEngine_TFG.Entities.Cards.StandardCards;
+using CGRuleEngine_TFG.Entities.Cards.DataBase;
 using CGRuleEngine_TFG.Entities.Players;
 using CGRuleEngine_TFG.Entities.Zones;
 using CGRuleEngine_TFG.Execution.Effects;
