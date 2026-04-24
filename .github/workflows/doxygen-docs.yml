@@ -14,6 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    - name: Clean previous Doxygen output
+      run: rm -rf html/
+  
     - name: Download code
       uses: actions/checkout@v4
 
@@ -24,9 +27,12 @@ jobs:
       run: doxygen Doxyfile
 
     - name: Prepare files for GitHub Pages
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        path: './html'
+        name: github-pages
+        path: html/
+        retention-days: 1
+        overwrite: true  # Prevent duplicates
 
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v4
