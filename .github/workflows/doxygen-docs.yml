@@ -27,12 +27,9 @@ jobs:
       run: doxygen Doxyfile
 
     - name: Prepare files for GitHub Pages
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-pages-artifact@v3
       with:
-        name: github-pages
         path: html/
-        retention-days: 1
-        overwrite: true  # Prevent duplicates
 
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v4
