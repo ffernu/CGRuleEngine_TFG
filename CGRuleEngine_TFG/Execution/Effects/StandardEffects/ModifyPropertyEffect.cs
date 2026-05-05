@@ -15,15 +15,17 @@ namespace CGRuleEngine_TFG.Execution.Effects.StandardEffects
     public class ModifyPropertyEffect : IEffect
     {
         public string? DebugName { get; set; }
+        public string Timing { get; set; }
 
         public String AffectedProperty { get; }
         public int Value { get; set; }
         public OperationType Operation { get; set; }
 
         // Constructor for the ModifyPropertyEffect, initializing the value to be applied, the property that will be affected, and the type of operation to be performed on the property
-        public ModifyPropertyEffect(int value, String property, OperationType operation, String? debugName)
+        public ModifyPropertyEffect(int value, String property, OperationType operation, String? debugName, String timing)
         {
             this.DebugName = debugName;
+            this.Timing = timing;
 
             this.Value = value;
             this.AffectedProperty = property;

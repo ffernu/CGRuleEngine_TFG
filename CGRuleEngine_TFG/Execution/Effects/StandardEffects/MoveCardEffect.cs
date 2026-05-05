@@ -10,13 +10,15 @@ namespace CGRuleEngine_TFG.Execution.Effects.StandardEffects
     public class MoveCardEffect : IEffect
     {
         public String? DebugName { get; set; }
+        public String Timing { get; set; }
 
         public String DestinationZoneName { get; set; }
 
         // Constructor for the MoveCardEffect, initializing the destination zone to which the cards will be moved
-        public MoveCardEffect(string? debugName, string destinationZoneName)
+        public MoveCardEffect(string? debugName, string destinationZoneName, string timing)
         {
             this.DebugName = debugName;
+            this.Timing = timing;
 
             this.DestinationZoneName = destinationZoneName;
         }

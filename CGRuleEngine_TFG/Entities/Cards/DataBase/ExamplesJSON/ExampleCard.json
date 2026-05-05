@@ -18,6 +18,7 @@
         {
             "Type": "ModifyPropertyEffect",
             "Parameters": {
+                "Timing": "OnPlay",
                 "AffectedProperty": "Health",
                 "Value": 5,
                 "Operation": "Subtract"
@@ -26,6 +27,7 @@
         {
             "Type": "ModifyTagEffect",
             "Parameters": {
+                "Timing": "OnPlay",
                 "Tag": "Fly",
                 "Operation": "Remove"
             }
@@ -33,13 +35,8 @@
         {
             "Type": "DrawEffect",
             "Parameters": {
+                "Timing": "OnPlay",
                 "Amount": 2
-            }
-        },
-        {
-            "Type: ": "MoveCardEffect",
-            "Parameters": {
-                "Destination": "Graveyard"
             }
         }
     ]

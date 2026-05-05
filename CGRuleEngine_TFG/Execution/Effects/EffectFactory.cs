@@ -48,7 +48,9 @@ namespace CGRuleEngine_TFG.Execution.Effects
             String opString = GetParam(data.Parameters, "Operation", "Subtract");
             Enum.TryParse(opString, out OperationType operation);
 
-            return new ModifyPropertyEffect(value, property, operation, debugName);
+            String timing = GetParam(data.Parameters, "Timing", "OnPlay");
+
+            return new ModifyPropertyEffect(value, property, operation, debugName, timing);
         }
 
         // Private method to build a ModifyTagEffect instance from the provided EffectData, it extracts the necessary parameters such as DebugName, AffectedTag, and Operation from the EffectData and uses them to construct and return a new ModifyTagEffect instance
@@ -59,8 +61,10 @@ namespace CGRuleEngine_TFG.Execution.Effects
 
             String opString = GetParam(data.Parameters, "Operation", "Add");
             Enum.TryParse(opString, out TagAction action);
-            
-            return new ModifyTagEffect(tag, action, debugName);
+
+            String timing = GetParam(data.Parameters, "Timing", "OnPlay");
+
+            return new ModifyTagEffect(tag, action, debugName, timing);
         }
 
         // Private method to build a DrawEffect instance from the provided EffectData, it extracts the necessary parameters such as DebugName, Amount, SourceZoneName, and DestinationZoneName from the EffectData and uses them to construct and return a new DrawEffect instance
@@ -71,7 +75,9 @@ namespace CGRuleEngine_TFG.Execution.Effects
             String source = GetParam(data.Parameters, "SourceZoneName", "Deck");
             String dest = GetParam(data.Parameters, "DestinationZoneName", "Hand");
 
-            return new DrawEffect(debugName, drawAmount, source, dest);
+            String timing = GetParam(data.Parameters, "Timing", "OnPlay");
+
+            return new DrawEffect(debugName, drawAmount, source, dest, timing);
         }
 
         // Private method to build a MoveCardEffect instance from the provided EffectData, it extracts the necessary parameters such as DebugName and DestinationZoneName from the EffectData and uses them to construct and return a new MoveCardEffect instance
@@ -80,7 +86,9 @@ namespace CGRuleEngine_TFG.Execution.Effects
             String debugName = GetParam(data.Parameters, "DebugName", "Move Card");
             String destinationZone = GetParam(data.Parameters, "DestinationZoneName", "Graveyard");
 
-            return new MoveCardEffect(destinationZone, debugName);
+            String timing = GetParam(data.Parameters, "Timing", "OnPlay");
+
+            return new MoveCardEffect(debugName, destinationZone, timing);
         }
 
         // Generic private method to extract a parameter of a specified type from the parameters dictionary, it takes the parameters dictionary, the key for the desired parameter, and a default value to return if the key is not found or if the value cannot be converted to the specified type, it returns the extracted parameter value or the default value

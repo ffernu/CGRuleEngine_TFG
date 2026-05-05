@@ -10,15 +10,17 @@ namespace CGRuleEngine_TFG.Execution.Effects.StandardEffects
     public class DrawEffect : IEffect
     {
         public String? DebugName { get; set; }
+        public String Timing { get; set; }
 
         public int Amount { get; set; }
         public String SourceZoneName { get; set; }
         public String DestinationZoneName { get; set; }
 
         // Constructor for the DrawEffect, initializing the amount of cards to be drawn, the source zone from which the cards will be drawn, and the destination zone to which the cards will be moved
-        public DrawEffect(String? debugName, int amount = 1, String source = "Deck", String destination = "Hand")
+        public DrawEffect(String? debugName, int amount = 1, String source = "Deck", String destination = "Hand", String timing)
         {
             this.DebugName = debugName;
+            this.Timing = timing;
 
             this.Amount = amount;
             this.SourceZoneName = source;

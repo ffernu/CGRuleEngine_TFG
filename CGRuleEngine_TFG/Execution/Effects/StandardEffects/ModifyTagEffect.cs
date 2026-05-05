@@ -13,14 +13,16 @@ namespace CGRuleEngine_TFG.Execution.Effects.StandardEffects
     public class ModifyTagEffect : IEffect
     {
         public String? DebugName { get; set; }
+        public String Timing { get; set; }
 
         public String AffectedTag { get; }
         public TagAction Action { get; set; }
 
         // Constructor for the ModifyTagEffect, initializing the value to be applied and the Tag that will be affected
-        public ModifyTagEffect(String tag, TagAction action, String? debugName)
+        public ModifyTagEffect(String tag, TagAction action, String? debugName, String timing)
         {
             this.DebugName = debugName;
+            this.Timing = timing;
 
             this.AffectedTag = tag;
             this.Action = action;
