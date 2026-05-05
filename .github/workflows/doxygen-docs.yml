@@ -14,11 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    - name: Clean previous Doxygen output
+      run: rm -rf html/
+  
     - name: Download code
       uses: actions/checkout@v4
 
     - name: Doxygen instalation
-      run: sudo apt-get update && sudo apt-get install -y doxygen
+      run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
 
     - name: Doxygen execution
       run: doxygen Doxyfile
@@ -26,7 +29,7 @@ jobs:
     - name: Prepare files for GitHub Pages
       uses: actions/upload-pages-artifact@v3
       with:
-        path: './html'
+        path: html/
 
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v4
