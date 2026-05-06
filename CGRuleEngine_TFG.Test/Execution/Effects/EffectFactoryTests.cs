@@ -75,8 +75,6 @@ namespace CGRuleEngine_TFG.Tests.Execution.Effects
             // Assert
             Assert.NotNull(effect);
             Assert.IsAssignableFrom<IEffect>(effect);
-            // We cannot strongly assert the exact properties of ModifyPropertyEffect as it's not available in context,
-            // but we verify the creation succeeds without throwing null reference exceptions.
         }
 
         [Fact]
@@ -98,6 +96,33 @@ namespace CGRuleEngine_TFG.Tests.Execution.Effects
 
             // Assert
             Assert.Null(exception); // Proves the try/catch inside GetParam worked properly
+        }
+
+        [Theory]
+        [InlineData("ModifyPropertyEffect")]
+        [InlineData("ModifyTagEffect")]
+        [InlineData("DrawEffect")]
+        [InlineData("MoveCardEffect")]
+        public void CreateEffect_DefaultEffectsWithTimingParameter_CreatesSuccessfully(string effectType)
+        {
+            // Arrange
+            var factory = new EffectFactory();
+            var data = new EffectData
+            {
+                Type = effectType,
+                Parameters = new Dictionary<string, object>
+                {
+                    { "Timing", "OnDeath" } // Testing the newly added Timing parameter logic
+                }
+            };
+
+            // Act
+            var effect = factory.CreateEffect(data);
+
+            // Assert
+            // Verifies that the new parameter extraction and constructor mappings execute without errors
+            Assert.NotNull(effect);
+            Assert.IsAssignableFrom<IEffect>(effect);
         }
     }
 }

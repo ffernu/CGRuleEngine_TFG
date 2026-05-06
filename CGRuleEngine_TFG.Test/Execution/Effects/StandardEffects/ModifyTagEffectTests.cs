@@ -13,10 +13,29 @@ namespace CGRuleEngine_TFG.Tests.Execution.Effects.StandardEffects
     public class ModifyTagEffectTests
     {
         [Fact]
+        public void Constructor_SetsPropertiesCorrectly()
+        {
+            // Arrange
+            string expectedTag = "Poisoned";
+            TagAction expectedAction = TagAction.Add;
+            string expectedDebugName = "Add Poison";
+            string expectedTiming = "OnPlay";
+
+            // Act
+            var effect = new ModifyTagEffect(expectedTag, expectedAction, expectedDebugName, expectedTiming);
+
+            // Assert
+            Assert.Equal(expectedTag, effect.AffectedTag);
+            Assert.Equal(expectedAction, effect.Action);
+            Assert.Equal(expectedDebugName, effect.DebugName);
+            Assert.Equal(expectedTiming, effect.Timing);
+        }
+
+        [Fact]
         public void Execute_ActionAdd_CallsAddTagOnTargets()
         {
             // Arrange
-            var effect = new ModifyTagEffect("Poisoned", TagAction.Add, "Add Poison");
+            var effect = new ModifyTagEffect("Poisoned", TagAction.Add, "Add Poison", "OnPlay");
 
             var targetMock = new Mock<ITargetable>();
             var context = new EffectContext(new Mock<ICard>().Object, new PlayerBuilder("Source").Build());
@@ -34,7 +53,7 @@ namespace CGRuleEngine_TFG.Tests.Execution.Effects.StandardEffects
         public void Execute_ActionRemove_CallsRemoveTagOnTargets()
         {
             // Arrange
-            var effect = new ModifyTagEffect("Stunned", TagAction.Remove, "Remove Stun");
+            var effect = new ModifyTagEffect("Stunned", TagAction.Remove, "Remove Stun", "OnPlay");
 
             var targetMock = new Mock<ITargetable>();
             var context = new EffectContext(new Mock<ICard>().Object, new PlayerBuilder("Source").Build());
@@ -52,7 +71,7 @@ namespace CGRuleEngine_TFG.Tests.Execution.Effects.StandardEffects
         public void Execute_MultipleTargets_AppliesToAll()
         {
             // Arrange
-            var effect = new ModifyTagEffect("Flying", TagAction.Add, "Add Flying");
+            var effect = new ModifyTagEffect("Flying", TagAction.Add, "Add Flying", "OnPlay");
 
             var targetMock1 = new Mock<ITargetable>();
             var targetMock2 = new Mock<ITargetable>();

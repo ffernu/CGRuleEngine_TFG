@@ -13,10 +13,31 @@ namespace CGRuleEngine_TFG.Tests.Execution.Effects.StandardEffects
     public class DrawEffectTests
     {
         [Fact]
+        public void Constructor_SetsPropertiesCorrectly()
+        {
+            // Arrange
+            string expectedTiming = "OnPlay";
+            string expectedDebugName = "Draw 2";
+            int expectedAmount = 2;
+            string expectedSource = "Deck";
+            string expectedDest = "Hand";
+
+            // Act
+            var effect = new DrawEffect(expectedTiming, expectedDebugName, expectedAmount, expectedSource, expectedDest);
+
+            // Assert
+            Assert.Equal(expectedTiming, effect.Timing);
+            Assert.Equal(expectedDebugName, effect.DebugName);
+            Assert.Equal(expectedAmount, effect.Amount);
+            Assert.Equal(expectedSource, effect.SourceZoneName);
+            Assert.Equal(expectedDest, effect.DestinationZoneName);
+        }
+
+        [Fact]
         public void Execute_TargetIsPlayerWithEnoughCards_DrawsRequestedAmount()
         {
             // Arrange
-            var effect = new DrawEffect("Draw 2", 2, "Deck", "Hand");
+            var effect = new DrawEffect("OnPlay", "Draw 2", 2, "Deck", "Hand");
 
             var sourceZoneMock = new Mock<IZone>();
             var destZoneMock = new Mock<IZone>();
@@ -50,7 +71,7 @@ namespace CGRuleEngine_TFG.Tests.Execution.Effects.StandardEffects
         public void Execute_SourceZoneHasFewerCardsThanRequested_DrawsAvailableCardsAndStops()
         {
             // Arrange
-            var effect = new DrawEffect("Draw 3", 3, "Deck", "Hand");
+            var effect = new DrawEffect("OnPlay", "Draw 3", 3, "Deck", "Hand");
 
             var sourceZoneMock = new Mock<IZone>();
             var destZoneMock = new Mock<IZone>();
@@ -83,7 +104,7 @@ namespace CGRuleEngine_TFG.Tests.Execution.Effects.StandardEffects
         public void Execute_TargetIsNotPlayer_DoesNothing()
         {
             // Arrange
-            var effect = new DrawEffect("Draw 1", 1, "Deck", "Hand");
+            var effect = new DrawEffect("OnPlay", "Draw 1", 1, "Deck", "Hand");
 
             // ICard implements ITargetable but is not a Player
             var nonPlayerTargetMock = new Mock<ICard>();

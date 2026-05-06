@@ -24,7 +24,6 @@ namespace CGRuleEngine_TFG.Entities.Cards
             this._database = database;
             this._effectFactory = effectFactory;
             RegisterBuilder("NormalCard", (t, o, id, ef) => new NormalCard(t, o, id, ef));
-            RegisterBuilder("DSCard", (t, o, id, ef) => new DSCard(t, o, id, ef));
         }
 
         // Method to register a custom builder function for a specific card type

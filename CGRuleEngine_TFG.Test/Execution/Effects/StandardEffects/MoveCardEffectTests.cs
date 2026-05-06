@@ -13,11 +13,28 @@ namespace CGRuleEngine_TFG.Tests.Execution.Effects.StandardEffects
     public class MoveCardEffectTests
     {
         [Fact]
+        public void Constructor_SetsPropertiesCorrectly()
+        {
+            // Arrange
+            string expectedDebugName = "Test Move";
+            string expectedDestZone = "Graveyard";
+            string expectedTiming = "OnPlay";
+
+            // Act
+            var effect = new MoveCardEffect(expectedDebugName, expectedDestZone, expectedTiming);
+
+            // Assert
+            Assert.Equal(expectedDebugName, effect.DebugName);
+            Assert.Equal(expectedDestZone, effect.DestinationZoneName);
+            Assert.Equal(expectedTiming, effect.Timing);
+        }
+
+        [Fact]
         public void Execute_TargetIsCardWithValidZones_MovesCardToDestination()
         {
             // Arrange
             string destZoneName = "Graveyard";
-            var effect = new MoveCardEffect("Test Move", destZoneName);
+            var effect = new MoveCardEffect("Test Move", destZoneName, "OnPlay");
 
             var sourceZoneMock = new Mock<IZone>();
             var destZoneMock = new Mock<IZone>();
@@ -48,7 +65,7 @@ namespace CGRuleEngine_TFG.Tests.Execution.Effects.StandardEffects
         {
             // Arrange
             string destZoneName = "Hand";
-            var effect = new MoveCardEffect("Test Move", destZoneName);
+            var effect = new MoveCardEffect("Test Move", destZoneName, "OnPlay");
             var destZoneMock = new Mock<IZone>();
 
             var sourcePlayer = new PlayerBuilder("SourcePlayer")
@@ -72,7 +89,7 @@ namespace CGRuleEngine_TFG.Tests.Execution.Effects.StandardEffects
         public void Execute_DestinationZoneDoesNotExist_DoesNothing()
         {
             // Arrange
-            var effect = new MoveCardEffect("Test Move", "NonExistentZone");
+            var effect = new MoveCardEffect("Test Move", "NonExistentZone", "OnPlay");
 
             // Player does not have the specified zone
             var sourcePlayer = new PlayerBuilder("SourcePlayer").Build();
@@ -101,7 +118,7 @@ namespace CGRuleEngine_TFG.Tests.Execution.Effects.StandardEffects
         {
             // Arrange
             string destZoneName = "Graveyard";
-            var effect = new MoveCardEffect("Test Move", destZoneName);
+            var effect = new MoveCardEffect("Test Move", destZoneName, "OnPlay");
 
             var destZoneMock = new Mock<IZone>();
             var sourcePlayer = new PlayerBuilder("SourcePlayer")

@@ -17,7 +17,7 @@ namespace CGRuleEngine_TFG.Execution.Effects.StandardEffects
         public String DestinationZoneName { get; set; }
 
         // Constructor for the DrawEffect, initializing the amount of cards to be drawn, the source zone from which the cards will be drawn, and the destination zone to which the cards will be moved
-        public DrawEffect(String? debugName, int amount = 1, String source = "Deck", String destination = "Hand", String timing)
+        public DrawEffect(String timing, String? debugName, int amount = 1, String source = "Deck", String destination = "Hand")
         {
             this.DebugName = debugName;
             this.Timing = timing;

@@ -77,7 +77,7 @@ namespace CGRuleEngine_TFG.Execution.Effects
 
             String timing = GetParam(data.Parameters, "Timing", "OnPlay");
 
-            return new DrawEffect(debugName, drawAmount, source, dest, timing);
+            return new DrawEffect(timing, debugName, drawAmount, source, dest);
         }
 
         // Private method to build a MoveCardEffect instance from the provided EffectData, it extracts the necessary parameters such as DebugName and DestinationZoneName from the EffectData and uses them to construct and return a new MoveCardEffect instance

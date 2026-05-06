@@ -13,10 +13,31 @@ namespace CGRuleEngine_TFG.Tests.Execution.Effects.StandardEffects
     public class ModifyPropertyEffectTests
     {
         [Fact]
+        public void Constructor_SetsPropertiesCorrectly()
+        {
+            // Arrange
+            int expectedValue = 5;
+            string expectedProperty = "Health";
+            OperationType expectedOperation = OperationType.Add;
+            string expectedDebugName = "Heal";
+            string expectedTiming = "OnPlay";
+
+            // Act
+            var effect = new ModifyPropertyEffect(expectedValue, expectedProperty, expectedOperation, expectedDebugName, expectedTiming);
+
+            // Assert
+            Assert.Equal(expectedValue, effect.Value);
+            Assert.Equal(expectedProperty, effect.AffectedProperty);
+            Assert.Equal(expectedOperation, effect.Operation);
+            Assert.Equal(expectedDebugName, effect.DebugName);
+            Assert.Equal(expectedTiming, effect.Timing);
+        }
+
+        [Fact]
         public void Execute_OperationAdd_AddsValueToProperty()
         {
             // Arrange
-            var effect = new ModifyPropertyEffect(5, "Health", OperationType.Add, "Heal");
+            var effect = new ModifyPropertyEffect(5, "Health", OperationType.Add, "Heal", "OnPlay");
 
             int initialValue = 10;
             var targetMock = new Mock<ITargetable>();
@@ -36,7 +57,7 @@ namespace CGRuleEngine_TFG.Tests.Execution.Effects.StandardEffects
         public void Execute_OperationSubtract_SubtractsValueFromProperty()
         {
             // Arrange
-            var effect = new ModifyPropertyEffect(3, "Armor", OperationType.Subtract, "Damage Armor");
+            var effect = new ModifyPropertyEffect(3, "Armor", OperationType.Subtract, "Damage Armor", "OnHit");
 
             int initialValue = 10;
             var targetMock = new Mock<ITargetable>();
@@ -56,7 +77,7 @@ namespace CGRuleEngine_TFG.Tests.Execution.Effects.StandardEffects
         public void Execute_OperationSet_SetsPropertyToExactValue()
         {
             // Arrange
-            var effect = new ModifyPropertyEffect(50, "Mana", OperationType.Set, "Set Mana");
+            var effect = new ModifyPropertyEffect(50, "Mana", OperationType.Set, "Set Mana", "OnStart");
 
             int initialValue = 10;
             var targetMock = new Mock<ITargetable>();
@@ -76,7 +97,7 @@ namespace CGRuleEngine_TFG.Tests.Execution.Effects.StandardEffects
         public void Execute_PropertyDoesNotExist_DoesNotAttemptToModify()
         {
             // Arrange
-            var effect = new ModifyPropertyEffect(5, "Speed", OperationType.Add, "Buff Speed");
+            var effect = new ModifyPropertyEffect(5, "Speed", OperationType.Add, "Buff Speed", "Always");
 
             int initialValue = 0;
             var targetMock = new Mock<ITargetable>();
