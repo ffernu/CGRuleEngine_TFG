@@ -12,6 +12,7 @@ namespace CGRuleEngine_TFG.Execution
     {
         public Player SourcePlayer { get; }
         public ICard CardToPlay { get; }
+        public List<ITargetable> Targets { get; }
 
         // Validation and payment logic can be provided as delegates, allowing for flexible and customizable behavior when playing a card
         private readonly Func<Player, ICard, IGameState, bool> _validationLogic;
@@ -21,23 +22,25 @@ namespace CGRuleEngine_TFG.Execution
         public PlayCardAction(
             Player player,
             ICard card,
-            Func<Player, ICard, IGameState, bool> validationLogic = null,
+            List<ITargetable> targets,
+        Func<Player, ICard, IGameState, bool> validationLogic = null,
             Action<Player, ICard> paymentLogic = null)
         {
-            SourcePlayer = player;
-            CardToPlay = card;
-            _validationLogic = validationLogic;
-            _paymentLogic = paymentLogic;
+            this.SourcePlayer = player;
+            this.CardToPlay = card;
+            this.Targets = targets ?? new List<ITargetable>();
+            this._validationLogic = validationLogic;
+            this._paymentLogic = paymentLogic;
         }
 
         // Checks if the action is valid in the current game state, ensuring that the player has priority and that any additional validation logic
         public bool IsValid(IGameState gameState)
         {
-            if (gameState.PriorityPlayer != SourcePlayer) return false;
+            if (gameState.PriorityPlayer != this.SourcePlayer) return false;
 
-            if (_validationLogic != null)
+            if (this._validationLogic != null)
             {
-                if (!_validationLogic(SourcePlayer, CardToPlay, gameState)) return false;
+                if (!_validationLogic(this.SourcePlayer, this.CardToPlay, gameState)) return false;
             }
 
             return true;
@@ -47,20 +50,20 @@ namespace CGRuleEngine_TFG.Execution
         public void Commit(IActionHandler handler)
         {
             // Apply payment logic if provided
-            _paymentLogic?.Invoke(SourcePlayer, CardToPlay);
+            this._paymentLogic?.Invoke(this.SourcePlayer, this.CardToPlay);
 
             // Move the card to the appropriate zone
-            if (CardToPlay.CurrentZone != null)
+            if (this.CardToPlay.CurrentZone != null)
             {
-                CardToPlay.CurrentZone.RemoveCard(CardToPlay);
-                CardToPlay.CurrentZone = null;
+                this.CardToPlay.CurrentZone.RemoveCard(this.CardToPlay);
+                this.CardToPlay.CurrentZone = null;
             }
 
             // Collect "OnPlay" effects to be played
             List<IEffect> effectsToPlay = new List<IEffect>();
-            if (CardToPlay.Effects != null) //
+            if (this.CardToPlay.Effects != null) //
             {
-                foreach (var effect in CardToPlay.Effects)
+                foreach (var effect in this.CardToPlay.Effects)
                 {
                     if (effect.Timing == "OnPlay")
                     {
@@ -69,12 +72,18 @@ namespace CGRuleEngine_TFG.Execution
                 }
             }
 
-            // If there are effects to play, create a sequence effect and push it onto the stack with the appropriate context
+            // If there are effects to play, push the effect or create a sequence effect and push it onto the stack with the appropriate context
             if (effectsToPlay.Count > 0)
             {
-                IEffect sequence = new SequenceEffect(effectsToPlay);
-                EffectContext context = new EffectContext(CardToPlay, SourcePlayer);
-                StackEntry entry = new StackEntry { Effect = sequence, Context = context };
+                IEffect effectToPush = effectsToPlay.Count == 1
+                    ? effectsToPlay[0]
+                    : new SequenceEffect(effectsToPlay);
+
+                EffectContext context = new EffectContext(this.CardToPlay, this.SourcePlayer)
+                {
+                    Targets = this.Targets
+                };
+                StackEntry entry = new StackEntry { Effect = effectToPush, Context = context };
 
                 handler.Stack.Push(entry);
             }
