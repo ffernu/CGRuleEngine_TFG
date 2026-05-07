@@ -16,7 +16,7 @@ namespace CGRuleEngine_TFG.Entities.Players
         public Dictionary<String, Object> Properties { get; set; }
         public List<string> Tags { get; set; } = new List<string>();
         public Dictionary<String, IZone> Zones { get; set; }
-        private IPlayerController Controller { get; set; }
+        public IPlayerController Controller { get; set; }
 
         // Constructor that takes a PlayerBuilder object as a parameter and initializes the properties of the Player class with the values from the builder
         public Player(PlayerBuilder builder)

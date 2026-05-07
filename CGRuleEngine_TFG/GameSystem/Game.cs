@@ -80,7 +80,10 @@ namespace CGRuleEngine_TFG.GameSystem
             this.ActivePlayer = this.Players[(lastPlayer + 1) % this.Players.Count];
             this.TurnNumber += 1;
             this.CurrentTurn = this.TemplateTurn.CreateTurn(this.ActivePlayer);
+
+            this.ResetPriority();
             this.CurrentTurn.Start(this);
+            this.NotifyPriorityPlayer();
         }
 
         // Method to start the next turn of the game, this method checks if the game is already over before starting the next turn. If the game is not over, it sets the active player to the given player, creates a new turn using the template turn and starts it
@@ -93,7 +96,10 @@ namespace CGRuleEngine_TFG.GameSystem
             this.ActivePlayer = player;
             this.TurnNumber += 1;
             this.CurrentTurn = this.TemplateTurn.CreateTurn(ActivePlayer);
+
+            this.ResetPriority();
             this.CurrentTurn.Start(this);
+            this.NotifyPriorityPlayer();
         }
 
         // Method to check the win condition of the game, this method is marked as virtual to allow for customization in derived classes. It can be used to check if any player has met the win condition and set the IsGameOver property to true if the game is over
@@ -122,7 +128,11 @@ namespace CGRuleEngine_TFG.GameSystem
                 this.ResetPriority();
                 if (!this.Stack.IsEmpty())
                 {
-                    this.Stack.Pop();
+                    while (!this.Stack.IsEmpty())
+                    {
+                        this.Stack.Pop();
+                    }
+                    this.NotifyPriorityPlayer();
                 }
                 else
                 {
@@ -133,7 +143,15 @@ namespace CGRuleEngine_TFG.GameSystem
                     {
                         this.nextTurn();
                     }
+                    else
+                    {
+                        this.NotifyPriorityPlayer();
+                    }
                 }
+            }
+            else
+            {
+                this.NotifyPriorityPlayer();
             }
         }
 
@@ -149,6 +167,13 @@ namespace CGRuleEngine_TFG.GameSystem
         {
             this.PriorityPlayer = this.ActivePlayer;
             this.consecutivePasses = 0;
+        }
+
+        // If the game is not over, it calls the RequestAction method of the priority player's controller to request an action from them
+        public void NotifyPriorityPlayer()
+        {
+            if (this.IsGameOver) return;
+            this.PriorityPlayer?.Controller.RequestAction(this);
         }
     }
 }

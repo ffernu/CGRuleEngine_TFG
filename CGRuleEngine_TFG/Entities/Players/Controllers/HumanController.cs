@@ -1,8 +1,7 @@
 ﻿using CGRuleEngine_TFG.GameSystem;
 using CGRuleEngine_TFG.Execution.Actions;
+using CGRuleEngine_TFG.Execution;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CGRuleEngine_TFG.Entities.Players.Controllers
 {
@@ -11,23 +10,40 @@ namespace CGRuleEngine_TFG.Entities.Players.Controllers
         public bool IsWaitingInput { get; set; }
         public IAction CurrentAction { get; set; }
 
-        // Constructor that initializes the IsWaitingInput property to false and the CurrentAction property to null
+        // Reference to the current game state, which can be used to validate and execute actions received from the user interface
+        private Game _currentGameRef;
+
+        // Constructor that initializes the human controller, setting the waiting input flag to false and the current action to null
         public HumanController()
         {
             IsWaitingInput = false;
             CurrentAction = null;
         }
 
-        // TODO:
-        public void requestAction(Game gameState)
+        // Method to request an action from the player, which sets the waiting input flag to true and stores a reference to the current game state for later validation and execution of actions received from the user interface
+        public void RequestAction(Game gameState)
         {
-            // TODO: Implement the logic for the human controller to request an action from the player, this could involve displaying a user interface for the player to choose an action or using some kind of AI to make a decision based on the game state
+            this._currentGameRef = gameState; 
+            this.IsWaitingInput = true;
         }
 
-        // TODO:
+        // Method to receive an action from the user interface, which checks if the controller is currently waiting for input and if the received action is valid in the context of the current game state. If the action is valid, it commits the action to the game state and resets the waiting input flag and current action.
         public void UIInputReceived(IAction action)
         {
-            // TODO: Implement the logic for handling the input received from the user interface, this could involve validating the action and updating the CurrentAction property accordingly
+            if (!IsWaitingInput) return;
+
+            // Validate the received action against the current game state reference. If the action is valid, commit it to the game state and reset the waiting input flag and current action.
+            if (action.IsValid(_currentGameRef))
+            {
+                this.IsWaitingInput = false;
+                this.CurrentAction = action;
+
+                this.CurrentAction.Commit(_currentGameRef);
+
+                this.CurrentAction = null;
+            }
+
+            _currentGameRef.NotifyPriorityPlayer();
         }
     }
 }
