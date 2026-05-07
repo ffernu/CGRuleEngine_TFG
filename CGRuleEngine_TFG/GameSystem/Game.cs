@@ -76,8 +76,16 @@ namespace CGRuleEngine_TFG.GameSystem
             {
                 throw new InvalidOperationException("The game is already over");
             }
-            int lastPlayer = this.Players.IndexOf(this.ActivePlayer);
-            this.ActivePlayer = this.Players[(lastPlayer + 1) % this.Players.Count];
+
+            int nextIndex = this.Players.IndexOf(this.ActivePlayer);
+            Player candidate;
+            do
+            {
+                nextIndex = (nextIndex + 1) % this.Players.Count;
+                candidate = this.Players[nextIndex];
+            } while (IsEliminated(candidate) && candidate != this.ActivePlayer);
+
+            this.ActivePlayer = candidate;
             this.TurnNumber += 1;
             this.CurrentTurn = this.TemplateTurn.CreateTurn(this.ActivePlayer);
 
@@ -93,6 +101,10 @@ namespace CGRuleEngine_TFG.GameSystem
             {
                 throw new InvalidOperationException("The game is already over");
             }
+            if(this.IsEliminated(player))
+            {
+                throw new InvalidOperationException("The given player is eliminated and cannot start a turn");
+            }
             this.ActivePlayer = player;
             this.TurnNumber += 1;
             this.CurrentTurn = this.TemplateTurn.CreateTurn(ActivePlayer);
@@ -105,7 +117,37 @@ namespace CGRuleEngine_TFG.GameSystem
         // Method to check the win condition of the game, this method is marked as virtual to allow for customization in derived classes. It can be used to check if any player has met the win condition and set the IsGameOver property to true if the game is over
         public virtual void checkWinCondition()
         {
-            // TODO: Implement an standart logic to check the win condition of the game
+            if (this.IsGameOver) return;
+
+            List<Player> alivePlayers = new List<Player>();
+            Player? vpWinner = null;
+
+            foreach (Player player in this.Players)
+            {
+                if (player.TryGetProperty<int>("Health", out int health) && health > 0)
+                {
+                    alivePlayers.Add(player);
+                }
+
+                if (player.TryGetProperty<int>("VictoryPoints", out int vp) && vp >= 20)
+                {
+                    vpWinner = player;
+                    break;
+                }
+            }
+
+            if (vpWinner != null)
+            {
+                this.EndGame(vpWinner);
+            }
+            else if (alivePlayers.Count == 1)
+            {
+                this.EndGame(alivePlayers[0]);
+            }
+            else if (alivePlayers.Count == 0)
+            {
+                this.IsGameOver = true;
+            }
         }
 
         // Method to get the rank of a player, this method checks if the player is in the results dictionary and returns their rank, otherwise it throws an exception
@@ -120,17 +162,33 @@ namespace CGRuleEngine_TFG.GameSystem
             if (player != this.PriorityPlayer) return;
             this.consecutivePasses++;
 
-            int currentIndex = this.Players.IndexOf(this.PriorityPlayer);
-            this.PriorityPlayer = this.Players[(currentIndex + 1) % this.Players.Count];
+            int nextIndex = this.Players.IndexOf(this.PriorityPlayer);
+            Player nextPriorityPlayer;
+            do
+            {
+                nextIndex = (nextIndex + 1) % this.Players.Count;
+                nextPriorityPlayer = this.Players[nextIndex];
+            } while (IsEliminated(nextPriorityPlayer) && nextPriorityPlayer != this.PriorityPlayer);
+
+            this.PriorityPlayer = nextPriorityPlayer;
 
             if (this.consecutivePasses >= this.Players.Count)
             {
                 this.ResetPriority();
+                this.checkWinCondition();
+                if (this.IsGameOver) return;
+                if (IsEliminated(this.ActivePlayer))
+                {
+                    this.nextTurn();
+                    return;
+                }
                 if (!this.Stack.IsEmpty())
                 {
                     while (!this.Stack.IsEmpty())
                     {
                         this.Stack.Pop();
+                        this.checkWinCondition();
+                        if (this.IsGameOver) return;
                     }
                     this.NotifyPriorityPlayer();
                 }
@@ -156,10 +214,25 @@ namespace CGRuleEngine_TFG.GameSystem
         }
 
         // Method to end the game, this method sets the IsGameOver property to true and can be used to calculate the results
-        public void EndGame(Player loser)
+        public void EndGame(Player winner)
         {
             this.IsGameOver = true;
-            // TODO: Implement an standard logic to calculate the results of the game and fill the results dictionary with the rank of each player
+            this.results[winner] = 1;
+
+            int otherRank = 2;
+            foreach (var player in this.Players)
+            {
+                if (player != winner)
+                {
+                    this.results[player] = otherRank++;
+                }
+            }
+        }
+
+        // Helper method to check if a player is eliminated, this method checks if the player has a "Health" property and if its value is less than or equal to 0, which indicates that the player is eliminated
+        private bool IsEliminated(Player p)
+        {
+            return p.TryGetProperty<int>("Health", out int health) && health <= 0;
         }
 
         // Method to reset the priority, this method sets the priority player to the active player and resets the consecutivePasses counter
