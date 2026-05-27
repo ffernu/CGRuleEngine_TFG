@@ -2,7 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+	<ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<PackageId>CGRuleEngine_TFG</PackageId>
+	<Version>0.1.0</Version>
+	<Authors>Francisco Fernández Ugidos</Authors>
+	<Description>Motor de reglas agnóstico y modular para juegos de cartas integrable en motores gráficos comerciales</Description>
   </PropertyGroup>
 
   <ItemGroup>
