@@ -8,6 +8,11 @@ namespace CGRuleEngine_TFG.Entities.Zones.StandardZones
 {
     public class Banished : BaseZone
     {
+        // Default constructor to initialize the banished zone without setting Owners
+        public Banished()
+        {
+        }
+
         // Constructor to initialize the banished zone, it creates an empty content and no owners
         public Banished(Player owner)
         {

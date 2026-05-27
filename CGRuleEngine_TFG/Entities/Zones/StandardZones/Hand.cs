@@ -13,6 +13,12 @@ namespace CGRuleEngine_TFG.Entities.Zones.StandardZones
         // Static random number generator to be used for selecting a random card from the hand
         private static readonly Random _rng = new Random();
 
+        // Default constructor to initialize the hand without setting Owners
+        public Hand(int maxSize)
+        {
+            this.MaxSize = maxSize;
+        }
+
         // Constructor to initialize the hand with a maximum size
         public Hand(int maxSize, Player owner)
         {

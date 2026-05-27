@@ -13,6 +13,12 @@ namespace CGRuleEngine_TFG.Entities.Zones.StandardZones
         // Static random number generator to be used for shuffling the deck
         private static readonly Random _rng = new Random();
 
+        // Default constructor to initialize the deck without setting Owners
+        public Deck(int maxSize)
+        {
+            this.MaxSize = maxSize;
+        }
+
         // Constructor to initialize the deck with a maximum size and a minimum size
         public Deck(int maxSize, Player owner)
         {

@@ -8,6 +8,11 @@ namespace CGRuleEngine_TFG.Entities.Zones.StandardZones
 {
     public class Discard : BaseZone
     {
+        // Default constructor to initialize the hand without setting Owners
+        public Discard()
+        {
+        }
+
         // Constructor to initialize the discard pile, it creates an empty content and no owners
         public Discard(Player owner)
         {

@@ -11,6 +11,13 @@ namespace CGRuleEngine_TFG.Entities.Zones.StandardZones
         public int MaxSize { get; set; }
         public int MaxSizePerPlayer { get; set; }
 
+        // Default constructor to initialize the board without setting Owners
+        public Board(int maxSize, int maxSizePerPlayer)
+        {
+            this.MaxSize = maxSize;
+            this.MaxSizePerPlayer = maxSizePerPlayer;
+        }
+
         // Constructor to initialize the board with a maximum size and a maximum size per player
         public Board(int maxSize, int maxSizePerPlayer, Player owner)
         {
