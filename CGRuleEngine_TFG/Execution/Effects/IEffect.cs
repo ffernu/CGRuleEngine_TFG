@@ -8,7 +8,7 @@ namespace CGRuleEngine_TFG.Execution.Effects
     public interface IEffect
     {
         public String? DebugName { get; set; }
-        string Timing { get; set; }
+        public string Timing { get; set; }
         public void execute(EffectContext context);
     }
 }
