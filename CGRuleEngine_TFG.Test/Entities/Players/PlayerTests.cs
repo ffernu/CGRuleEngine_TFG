@@ -55,7 +55,7 @@ namespace CGRuleEngine_TFG.Test.Entities.Players
         public void TryGetProperty_PropertyExistsAndCorrectType_ReturnsTrueAndValue()
         {
             // Arrange
-            var player = new PlayerBuilder().WithStat("Health", 100).Build();
+            var player = new PlayerBuilder().WithProperty("Health", 100).Build();
 
             // Act
             bool success = player.TryGetProperty<int>("Health", out int value);
@@ -69,7 +69,7 @@ namespace CGRuleEngine_TFG.Test.Entities.Players
         public void TryGetProperty_PropertyExistsButWrongType_ReturnsFalseAndDefault()
         {
             // Arrange
-            var player = new PlayerBuilder().WithStat("Health", 100).Build();
+            var player = new PlayerBuilder().WithProperty("Health", 100).Build();
 
             // Act
             bool success = player.TryGetProperty<string>("Health", out string value);
@@ -111,7 +111,7 @@ namespace CGRuleEngine_TFG.Test.Entities.Players
         public void SetProperty_ExistingProperty_UpdatesPropertyValue()
         {
             // Arrange
-            var player = new PlayerBuilder().WithStat("Gold", 100).Build();
+            var player = new PlayerBuilder().WithProperty("Gold", 100).Build();
 
             // Act
             player.SetProperty("Gold", 300);

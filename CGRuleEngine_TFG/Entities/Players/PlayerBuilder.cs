@@ -44,7 +44,7 @@ namespace CGRuleEngine_TFG.Entities.Players
         }
 
         // Method to set the properties of the player, it takes a name and a value as parameters and adds them to the properties dictionary of the builder
-        public PlayerBuilder WithStat(String name, int value)
+        public PlayerBuilder WithProperty(String name, int value)
         {
             Properties[name] = value;
             return this;

@@ -69,7 +69,7 @@ namespace CGRuleEngine_TFG.Tests.Entities.Players
             var builder = new PlayerBuilder();
 
             // Act
-            var result = builder.WithStat("Health", 100);
+            var result = builder.WithProperty("Health", 100);
 
             // Assert
             Assert.Same(builder, result);
@@ -115,7 +115,7 @@ namespace CGRuleEngine_TFG.Tests.Entities.Players
             var zoneMock = new Mock<IZone>();
             var builder = new PlayerBuilder("Charlie")
                 .SetController(controllerMock.Object)
-                .WithStat("Mana", 50)
+                .WithProperty("Mana", 50)
                 .WithTag("Mage")
                 .WithZone("Deck", zoneMock.Object);
 
