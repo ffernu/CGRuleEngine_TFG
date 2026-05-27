@@ -35,32 +35,45 @@ namespace CGRuleEngine_TFG.Entities.Cards.DataBase
             {
                 try
                 {
-                    string jsonContent = File.ReadAllText(file);
+                    string jsonContent = File.ReadAllText(file).Trim();
+                    List<CardTemplate> templatesInFile = new List<CardTemplate>();
 
-                    // Deserialize the JSON content into a CardTemplate object
-                    CardTemplate? template = JsonConvert.DeserializeObject<CardTemplate>(jsonContent);
-
-                    if (template != null && !string.IsNullOrEmpty(template.Id))
+                    // Check if is a JSON array or a single JSON object and deserialize accordingly
+                    if (jsonContent.StartsWith("["))
                     {
-                        if (_templates.ContainsKey(template.Id))
-                        {
-                            throw new InvalidOperationException($"ERROR: ID duplicado ({template.Id}) en el archivo {file}");
-                        }
+                        var list = JsonConvert.DeserializeObject<List<CardTemplate>>(jsonContent);
+                        if (list != null) templatesInFile.AddRange(list);
+                    }
+                    else if (jsonContent.StartsWith("{"))
+                    {
+                        var singleTemplate = JsonConvert.DeserializeObject<CardTemplate>(jsonContent);
+                        if (singleTemplate != null) templatesInFile.Add(singleTemplate);
+                    }
 
-                        // Convert long values to int in the Properties dictionary to ensure consistent data types
-                        if (template.Properties != null)
+                    foreach (var template in templatesInFile)
+                    {
+                        if (template != null && !string.IsNullOrEmpty(template.Id))
                         {
-                            List<string> keys = template.Properties.Keys.ToList();
-                            foreach (string key in keys)
+                            if (_templates.ContainsKey(template.Id))
                             {
-                                if (template.Properties[key] is long num)
+                                throw new InvalidOperationException($"ERROR: ID duplicado ({template.Id}) en el archivo {file}");
+                            }
+
+                            // Convert long values to int in the Properties dictionary to ensure consistent data types
+                            if (template.Properties != null)
+                            {
+                                List<string> keys = template.Properties.Keys.ToList();
+                                foreach (string key in keys)
                                 {
-                                    template.Properties[key] = Convert.ToInt32(num);
+                                    if (template.Properties[key] is long num)
+                                    {
+                                        template.Properties[key] = Convert.ToInt32(num);
+                                    }
                                 }
                             }
-                        }
 
-                        _templates.Add(template.Id, template);
+                            _templates.Add(template.Id, template);
+                        }
                     }
                 }
                 catch (Exception ex)

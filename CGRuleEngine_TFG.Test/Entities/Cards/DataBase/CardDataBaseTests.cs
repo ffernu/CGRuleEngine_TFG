@@ -64,6 +64,49 @@ namespace CGRuleEngine_TFG.Tests.Entities.Cards.DataBase
         }
 
         [Fact]
+        public void Constructor_FileWithJsonArray_LoadsAllTemplates()
+        {
+            // Arrange
+            var templateArray = new[]
+            {
+                new { Id = "ArrayCard1", Name = "Knight" },
+                new { Id = "ArrayCard2", Name = "Archer" }
+            };
+            CreateCardJsonFile("arrayCards.json", templateArray);
+
+            // Act
+            var database = new CardDatabase(_tempDirectory);
+
+            // Assert
+            Assert.Equal(2, database.Count);
+            Assert.True(database.Contains("ArrayCard1"));
+            Assert.True(database.Contains("ArrayCard2"));
+        }
+
+        [Fact]
+        public void Constructor_MixedSingleAndArrayFiles_LoadsAllTemplates()
+        {
+            // Arrange
+            CreateCardJsonFile("singleCard.json", new { Id = "Single01", Name = "Boss" });
+
+            var templateArray = new[]
+            {
+                new { Id = "ArrayCard1", Name = "Minion1" },
+                new { Id = "ArrayCard2", Name = "Minion2" }
+            };
+            CreateCardJsonFile("arrayCards.json", templateArray);
+
+            // Act
+            var database = new CardDatabase(_tempDirectory);
+
+            // Assert
+            Assert.Equal(3, database.Count);
+            Assert.True(database.Contains("Single01"));
+            Assert.True(database.Contains("ArrayCard1"));
+            Assert.True(database.Contains("ArrayCard2"));
+        }
+
+        [Fact]
         public void Constructor_FileWithDuplicateId_IgnoresDuplicateAndContinues()
         {
             // Arrange
