@@ -92,7 +92,7 @@ namespace CGRuleEngine_TFG.Execution.Effects
         }
 
         // Generic private method to extract a parameter of a specified type from the parameters dictionary, it takes the parameters dictionary, the key for the desired parameter, and a default value to return if the key is not found or if the value cannot be converted to the specified type, it returns the extracted parameter value or the default value
-        private static T GetParam<T>(Dictionary<string, object> parameters, string key, T defaultValue)
+        public static T GetParam<T>(Dictionary<string, object> parameters, string key, T defaultValue)
         {
             if (parameters != null && parameters.TryGetValue(key, out object value))
             {
