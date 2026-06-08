@@ -41,8 +41,6 @@ namespace CGRuleEngine_TFG.Entities.Cards
             if (_builders.TryGetValue(typeCard, out var constructor))
             {
                 _idCounter++;
-
-                // Use the registered builder function to create the card instance
                 ICard card = constructor(template, owner, _idCounter, this._effectFactory);
                 if (zone != null)
                 {

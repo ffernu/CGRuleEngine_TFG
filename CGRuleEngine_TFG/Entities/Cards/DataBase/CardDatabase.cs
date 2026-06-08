@@ -8,7 +8,7 @@ namespace CGRuleEngine_TFG.Entities.Cards.DataBase
 {
     public class CardDatabase
     {
-        private readonly Dictionary<string, CardTemplate> _templates = new Dictionary<string, CardTemplate>();
+        public readonly Dictionary<string, CardTemplate> _templates = new Dictionary<string, CardTemplate>();
         private readonly string _sourcePath;
 
         public int Count => _templates.Count;

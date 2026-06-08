@@ -101,7 +101,7 @@ namespace CGRuleEngine_TFG.Entities.Cards
             this.Tags = new List<string>(this.BaseTemplate.Tags ?? new List<string>());
             this.Properties = new Dictionary<string, object>(this.BaseTemplate.Properties ?? new Dictionary<string, object>());
 
-            this.Effects = new List<IEffect>();// TODO
+            //this.Effects = new List<IEffect>();// TODO
 
             this.IsFaceUp = true;
             this.IsTapped = false;

@@ -1,5 +1,6 @@
 ﻿using CGRuleEngine_TFG.Entities.Cards.DataBase;
 using CGRuleEngine_TFG.Execution.Effects.StandardEffects;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -98,9 +99,14 @@ namespace CGRuleEngine_TFG.Execution.Effects
             {
                 try
                 {
+                    if (value is JToken jToken)
+                    {
+                        return jToken.ToObject<T>();
+                    }
+
                     return (T)Convert.ChangeType(value, typeof(T));
                 }
-                catch
+                catch (Exception ex)
                 {
                     return defaultValue;
                 }
