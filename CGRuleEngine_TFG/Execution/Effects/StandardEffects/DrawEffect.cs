@@ -30,7 +30,17 @@ namespace CGRuleEngine_TFG.Execution.Effects.StandardEffects
         // Method to execute the effect, which iterates through the targets in the context and moves the specified amount of cards from the source zone to the destination zone for each target that is a player
         public void execute(EffectContext context)
         {
-            foreach (ITargetable target in context.Targets)
+            List<ITargetable> targetsToApply = new List<ITargetable>();
+            if (context.Targets != null && context.Targets.Count > 0)
+            {
+                targetsToApply.AddRange(context.Targets);
+            }
+            else
+            {
+                targetsToApply.Add(context.SourcePlayer);
+            }
+
+            foreach (ITargetable target in targetsToApply)
             {
                 if (target is Player player)
                 {

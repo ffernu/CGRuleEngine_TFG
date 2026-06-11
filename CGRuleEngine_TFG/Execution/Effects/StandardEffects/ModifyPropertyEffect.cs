@@ -35,7 +35,18 @@ namespace CGRuleEngine_TFG.Execution.Effects.StandardEffects
         // Method to execute the effect, which iterates through the targets in the context and applies the specified operation to the affected property of each target
         public void execute(EffectContext context)
         {
-            foreach (ITargetable target in context.Targets)
+            List<ITargetable> targetsToApply = new List<ITargetable>();
+            if (context.Targets != null && context.Targets.Count > 0)
+            {
+                targetsToApply.AddRange(context.Targets);
+            }
+            else
+            {
+                // If targets is empty. It affects the sourcePlayer.
+                targetsToApply.Add((ITargetable)context.SourcePlayer);
+            }
+
+            foreach (ITargetable target in targetsToApply)
             {
                 if (target.TryGetProperty<int>(this.AffectedProperty, out int statActual))
                 {

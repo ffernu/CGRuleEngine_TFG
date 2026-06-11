@@ -43,7 +43,7 @@ namespace CGRuleEngine_TFG.Entities.Players.Controllers
                 this.CurrentAction = null;
             }
 
-            _currentGameRef.NotifyPriorityPlayer();
+            //_currentGameRef.NotifyPriorityPlayer();
         }
     }
 }

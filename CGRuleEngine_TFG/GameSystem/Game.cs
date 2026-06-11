@@ -91,7 +91,7 @@ namespace CGRuleEngine_TFG.GameSystem
 
             this.ResetPriority();
             this.CurrentTurn.Start(this);
-            this.NotifyPriorityPlayer();
+            //this.NotifyPriorityPlayer();
         }
 
         // Method to start the next turn of the game, this method checks if the game is already over before starting the next turn. If the game is not over, it sets the active player to the given player, creates a new turn using the template turn and starts it
@@ -111,7 +111,7 @@ namespace CGRuleEngine_TFG.GameSystem
 
             this.ResetPriority();
             this.CurrentTurn.Start(this);
-            this.NotifyPriorityPlayer();
+            //this.NotifyPriorityPlayer();
         }
 
         // Method to check the win condition of the game, this method is marked as virtual to allow for customization in derived classes. It can be used to check if any player has met the win condition and set the IsGameOver property to true if the game is over
@@ -124,7 +124,7 @@ namespace CGRuleEngine_TFG.GameSystem
 
             foreach (Player player in this.Players)
             {
-                if (player.TryGetProperty<int>("Health", out int health) && health > 0)
+                if (player.TryGetProperty<int>("Life", out int health) && health > 0)
                 {
                     alivePlayers.Add(player);
                 }
@@ -203,7 +203,7 @@ namespace CGRuleEngine_TFG.GameSystem
                     }
                     else
                     {
-                        this.NotifyPriorityPlayer();
+                        //this.NotifyPriorityPlayer();
                     }
                 }
             }
@@ -232,7 +232,7 @@ namespace CGRuleEngine_TFG.GameSystem
         // Helper method to check if a player is eliminated, this method checks if the player has a "Health" property and if its value is less than or equal to 0, which indicates that the player is eliminated
         private bool IsEliminated(Player p)
         {
-            return p.TryGetProperty<int>("Health", out int health) && health <= 0;
+            return p.TryGetProperty<int>("Life", out int health) && health <= 0;
         }
 
         // Method to reset the priority, this method sets the priority player to the active player and resets the consecutivePasses counter
