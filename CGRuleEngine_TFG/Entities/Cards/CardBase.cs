@@ -67,6 +67,12 @@ namespace CGRuleEngine_TFG.Entities.Cards
             return false;
         }
 
+        // Method to remove a property from the card's Properties dictionary
+        public void RemoveProperty(string propertyName)
+        {
+            Properties.Remove(propertyName);
+        }
+
         // Method to set a property value by its name, it updates the Properties dictionary with the provided value for the specified property name
         public void SetProperty(string propertyName, object value)
         {
