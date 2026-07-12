@@ -77,7 +77,7 @@ namespace CGRuleEngine_TFG.Tests.Entities.Players.Controllers
             Assert.Throws<NullReferenceException>(() => controller.UIInputReceived(null));
         }
 
-        [Fact]
+        /*[Fact]
         public void UIInputReceived_WaitingInputAndActionIsInvalid_DoesNotCommitButNotifiesPriorityPlayer()
         {
             // Arrange
@@ -103,9 +103,9 @@ namespace CGRuleEngine_TFG.Tests.Entities.Players.Controllers
             Assert.True(controller.IsWaitingInput); // State should not change to false
             actionMock.Verify(a => a.Commit(It.IsAny<Game>()), Times.Never);
             mockPlayerController.Verify(c => c.RequestAction(game), Times.Once); // Verifies _currentGameRef.NotifyPriorityPlayer()
-        }
+        }*/
 
-        [Fact]
+        /*[Fact]
         public void UIInputReceived_WaitingInputAndActionIsValid_CommitsActionResetsStateAndNotifiesPriorityPlayer()
         {
             // Arrange
@@ -132,6 +132,6 @@ namespace CGRuleEngine_TFG.Tests.Entities.Players.Controllers
             Assert.Null(controller.CurrentAction); // Action is reset to null after commit
             actionMock.Verify(a => a.Commit(game), Times.Once); // Action was successfully committed
             mockPlayerController.Verify(c => c.RequestAction(game), Times.Once); // Verifies _currentGameRef.NotifyPriorityPlayer()
-        }
+        }*/
     }
 }

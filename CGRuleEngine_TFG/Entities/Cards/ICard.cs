@@ -40,5 +40,8 @@ namespace CGRuleEngine_TFG.Entities.Cards
 
         // Method to reset the card's state, untapping it and flipping it face up
         public void Reset();
+
+        // Method to remove a property from the card's Properties dictionary
+        public void RemoveProperty(string propertyName);
     }
 }
