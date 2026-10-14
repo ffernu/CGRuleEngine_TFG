@@ -5,7 +5,7 @@
 ## 🇬🇧 English
 
 ### Description
-CGRuleEngine is an agnostic and modular rule engine designed to manage the logic of card video games. It acts as an independent core that handles game execution, players, zones, cards, effects, and turns, allowing developers to focus on the visual representation and specific mechanics of their game.
+CGRuleEngine is an agnostic and modular rule engine designed to manage the logic of card video games. It acts as an independent core that handles game execution, players, zones, cards, effects, and turns, allowing developers to focus on the visual representation and specific mechanics of their game. You can find the complete report on the following link: https://drive.google.com/file/d/1ry9sQ37D3C4ZeJoiHufHMRKxWUogb1Eh/view?usp=sharing
 
 ### Features
 *   **Data-Oriented Definition:** Design cards and their properties easily using JSON files.
@@ -79,7 +79,7 @@ This project is licensed under the MIT License - see the LICENSE section below f
 ## 🇪🇸 Español
 
 ### Descripción
-CGRuleEngine es un motor de reglas agnóstico y modular diseñado para gestionar la lógica de videojuegos de cartas. Actúa como un núcleo independiente que maneja la ejecución de la partida, jugadores, zonas, cartas, efectos y turnos, permitiendo a los desarrolladores centrarse en la representación visual y las mecánicas específicas de su juego.
+CGRuleEngine es un motor de reglas agnóstico y modular diseñado para gestionar la lógica de videojuegos de cartas. Actúa como un núcleo independiente que maneja la ejecución de la partida, jugadores, zonas, cartas, efectos y turnos, permitiendo a los desarrolladores centrarse en la representación visual y las mecánicas específicas de su juego. Puedes encontrar la memoria completa en el siguiente enlace: https://drive.google.com/file/d/1ry9sQ37D3C4ZeJoiHufHMRKxWUogb1Eh/view?usp=sharing
 
 ### Características
 *   **Definición orientada a datos:** Diseña cartas y sus propiedades de forma sencilla utilizando archivos JSON.
